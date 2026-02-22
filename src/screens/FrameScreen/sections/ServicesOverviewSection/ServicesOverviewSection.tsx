@@ -60,13 +60,13 @@ export const ServicesOverviewSection = (): JSX.Element => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative flex flex-col items-center justify-center gap-8 px-4 py-[100px] w-full overflow-hidden bg-[linear-gradient(0deg,rgba(15,24,41,1)_0%,rgba(15,24,41,1)_100%),linear-gradient(180deg,rgba(42,53,106,1)_0%,rgba(15,24,41,1)_100%)]">
+    <section ref={sectionRef} className="relative flex flex-col items-center justify-center gap-6 px-4 py-[60px] w-full overflow-hidden bg-[linear-gradient(0deg,rgba(15,24,41,1)_0%,rgba(15,24,41,1)_100%),linear-gradient(180deg,rgba(42,53,106,1)_0%,rgba(15,24,41,1)_100%)]">
       <div className="absolute top-[-170px] right-[-180px] w-[758px] h-[758px] bg-[#7b94ff40] rounded-[379px] blur-[125px] pointer-events-none" />
 
       <div className="absolute top-[683px] right-[1588px] w-[758px] h-[758px] bg-[#7b94ff40] rounded-[379px] blur-[125px] pointer-events-none" />
 
       <div className={`flex items-center justify-center w-full max-w-[1440px] px-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-3xl md:text-4xl lg:text-[54px] tracking-[-2.00px] leading-tight lg:leading-[64px] text-center">
+        <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-2xl md:text-3xl lg:text-[40px] tracking-[-1.5px] leading-tight lg:leading-[48px] text-center">
           How we can help you
         </h2>
       </div>
@@ -79,13 +79,13 @@ export const ServicesOverviewSection = (): JSX.Element => {
               value={item.id}
               className="border-t border-white transition-all hover:bg-white/5"
             >
-              <AccordionTrigger className="px-4 md:px-10 py-8 hover:no-underline [&[data-state=open]>svg]:rotate-45 transition-all">
-                <span className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-xl md:text-2xl lg:text-[32px] leading-tight md:leading-10 text-left">
+              <AccordionTrigger className="px-4 md:px-10 py-5 hover:no-underline [&[data-state=open]>svg]:rotate-45 transition-all">
+                <span className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-lg md:text-xl lg:text-[22px] leading-tight md:leading-8 text-left">
                   {item.question}
                 </span>
               </AccordionTrigger>
-              <AccordionContent className="px-4 md:px-10 pb-8">
-                <div className="text-white/80 text-base md:text-lg leading-relaxed">
+              <AccordionContent className="px-4 md:px-10 pb-5">
+                <div className="text-white/80 text-sm md:text-base leading-relaxed">
                   {item.answer}
                 </div>
               </AccordionContent>

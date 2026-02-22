@@ -94,10 +94,10 @@ export const ResultsShowcaseSection = (): JSX.Element => {
   };
 
   return (
-    <section ref={sectionRef} className="w-full bg-white py-[100px] px-4 md:px-16 lg:px-20">
+    <section ref={sectionRef} className="w-full bg-white py-[60px] px-4 md:px-16 lg:px-20">
       <div className="w-full max-w-[1600px] mx-auto">
-        <header className={`flex flex-col md:flex-row items-start md:items-center justify-between mb-24 gap-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-3xl md:text-4xl lg:text-[54px] tracking-[-2.00px] leading-tight lg:leading-[64px]">
+        <header className={`flex flex-col md:flex-row items-start md:items-center justify-between mb-12 gap-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-2xl md:text-3xl lg:text-[40px] tracking-[-1.5px] leading-tight lg:leading-[48px]">
             Some recent client results
           </h2>
 
@@ -129,23 +129,23 @@ export const ResultsShowcaseSection = (): JSX.Element => {
 
         <div className={`overflow-hidden transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div
-            className="flex transition-transform duration-500 ease-out"
-            style={{ transform: `translateX(calc(-${currentIndex * 100}% - ${currentIndex * 24}px))` }}
+            className="flex transition-transform duration-500 ease-out gap-6"
+            style={{ transform: `translateX(-${currentIndex * 504}px)` }}
           >
             {testimonials.map((testimonial, index) => (
               <Card
                 key={`testimonial-${index}`}
-                className={`flex-shrink-0 w-full bg-white rounded-[11.96px] border-[3.74px] ${testimonial.borderColor} shadow-none hover:shadow-lg transition-all duration-300 ${index < testimonials.length - 1 ? 'mr-6' : ''}`}
+                className={`flex-shrink-0 w-[480px] bg-white rounded-[11.96px] border-[3.74px] ${testimonial.borderColor} shadow-none hover:shadow-lg transition-all duration-300`}
               >
-                <CardContent className="p-8 flex flex-col gap-6">
-                  <div className="flex flex-col gap-6">
-                    <blockquote className="[font-family:'Montserrat',Helvetica] font-normal text-[#12131c] text-lg md:text-xl leading-[23.9px]">
+                <CardContent className="p-5 flex flex-col gap-4">
+                  <div className="flex flex-col gap-4">
+                    <blockquote className="[font-family:'Montserrat',Helvetica] font-normal text-[#12131c] text-[13px] leading-[19px]">
                       {testimonial.quote}
                     </blockquote>
 
-                    <div className="flex flex-col gap-6">
-                      <div className="flex items-center gap-3">
-                        <Avatar className="w-[59.81px] h-[59.81px] rounded-[11.96px] border-[1.5px] border-black">
+                    <div className="flex flex-col gap-4">
+                      <div className="flex items-center gap-2.5">
+                        <Avatar className="w-[42px] h-[42px] rounded-[8px] border-[1.5px] border-black">
                           <AvatarImage
                             src={testimonial.avatar}
                             alt={testimonial.name}
@@ -154,35 +154,35 @@ export const ResultsShowcaseSection = (): JSX.Element => {
                         </Avatar>
 
                         <div className="flex flex-col">
-                          <cite className="not-italic [font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-[17.9px] leading-[21.5px]">
+                          <cite className="not-italic [font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-[14px] leading-[18px]">
                             {testimonial.name}
                           </cite>
-                          <p className="[font-family:'Montserrat',Helvetica] font-normal text-[#12131c] text-[10.5px] leading-[15.7px] opacity-80">
+                          <p className="[font-family:'Montserrat',Helvetica] font-normal text-[#12131c] text-[9px] leading-[13px] opacity-80">
                             {testimonial.title}
                           </p>
                         </div>
                       </div>
 
                       <div
-                        className={`${testimonial.logoWidth} w-full h-[47.85px] bg-cover bg-center`}
+                        className={`${testimonial.logoWidth} w-full h-[35px] bg-contain bg-no-repeat bg-left`}
                         style={{ backgroundImage: `url(${testimonial.logo})` }}
                       />
                     </div>
                   </div>
 
-                  <div className="flex flex-col gap-[23.18px]">
+                  <div className="flex flex-col gap-4">
                     <img
                       src={testimonial.chart}
                       alt={`${testimonial.name} results chart`}
                       className="w-full object-contain"
                     />
 
-                    <div className="flex flex-wrap items-center justify-between gap-3">
-                      <div className="flex items-center gap-2">
-                        <span className="[font-family:'Montserrat',Helvetica] font-medium text-[#12131c] text-[17.9px] leading-[23.3px]">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <div className="flex items-center gap-1.5">
+                        <span className="[font-family:'Montserrat',Helvetica] font-medium text-[#12131c] text-[14px] leading-[18px]">
                           {testimonial.percentage}
                         </span>
-                        <p className="[font-family:'Montserrat',Helvetica] font-normal text-[14.4px] leading-[20.1px]">
+                        <p className="[font-family:'Montserrat',Helvetica] font-normal text-[12px] leading-[16px]">
                           <span className="font-medium text-[#12131c]">
                             increase in{" "}
                           </span>
@@ -192,9 +192,9 @@ export const ResultsShowcaseSection = (): JSX.Element => {
                         </p>
                       </div>
 
-                      <Button className="h-auto bg-[#031226] hover:bg-[#031226]/90 text-white rounded-full px-4 py-1.5 [font-family:'Montserrat',Helvetica] font-semibold text-base transition-all hover:scale-105 active:scale-95">
+                      <Button className="h-auto bg-[#031226] hover:bg-[#031226]/90 text-white rounded-full px-3 py-1 [font-family:'Montserrat',Helvetica] font-semibold text-xs transition-all hover:scale-105 active:scale-95">
                         View Full Case Study
-                        <ArrowRightIcon className="w-5 h-5 ml-2" />
+                        <ArrowRightIcon className="w-4 h-4 ml-1.5" />
                       </Button>
                     </div>
                   </div>

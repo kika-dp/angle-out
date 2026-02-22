@@ -56,7 +56,7 @@ export const HeroSection = (): JSX.Element => {
   };
 
   return (
-    <section className="flex flex-col items-center gap-[100px] pt-0 pb-[100px] px-0 relative w-full overflow-hidden bg-[linear-gradient(0deg,rgba(15,24,41,1)_0%,rgba(15,24,41,1)_100%),linear-gradient(0deg,rgba(210,233,255,1)_0%,rgba(245,245,249,1)_100%)]">
+    <section className="flex flex-col items-center gap-[60px] pt-0 pb-[60px] px-0 relative w-full overflow-hidden bg-[linear-gradient(0deg,rgba(15,24,41,1)_0%,rgba(15,24,41,1)_100%),linear-gradient(0deg,rgba(210,233,255,1)_0%,rgba(245,245,249,1)_100%)]">
       <div className="absolute top-[-310px] right-[-270px] w-[758px] h-[758px] bg-[#7b94ff40] rounded-[379px] blur-[125px]" />
 
       <img
@@ -67,8 +67,8 @@ export const HeroSection = (): JSX.Element => {
 
       {/* Sticky Header */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? "bg-white shadow-[0_2px_20px_rgba(0,0,0,0.08)] backdrop-blur-md"
-          : "bg-transparent"
+        ? "bg-white shadow-[0_2px_20px_rgba(0,0,0,0.08)] backdrop-blur-md"
+        : "bg-transparent"
         }`}>
         <nav className="flex min-h-[72px] items-center justify-center px-4 md:px-10 py-0 relative w-full">
           <div className="flex max-w-[1440px] w-full items-center justify-between">
@@ -89,9 +89,9 @@ export const HeroSection = (): JSX.Element => {
                     <a href={item.href} onClick={(e) => handleNavClick(e, item.href, item.label)}>
                       <Button
                         variant="ghost"
-                        className={`h-auto px-8 py-6 text-base [font-family:'Roboto',Helvetica] font-normal transition-all duration-300 ${scrolled
-                            ? `text-[#031226] hover:bg-[#031226]/5 ${activeSection === item.label ? "bg-[#031226]/10 font-semibold" : ""}`
-                            : `text-white hover:bg-white/10 ${activeSection === item.label ? "bg-white/10 font-semibold" : ""}`
+                        className={`h-auto px-5 py-3 text-sm [font-family:'Roboto',Helvetica] font-normal transition-all duration-300 ${scrolled
+                          ? `text-[#031226] hover:bg-[#031226]/5 ${activeSection === item.label ? "bg-[#031226]/10 font-semibold" : ""}`
+                          : `text-white hover:bg-white/10 ${activeSection === item.label ? "bg-white/10 font-semibold" : ""}`
                           }`}
                       >
                         {item.label}
@@ -102,10 +102,10 @@ export const HeroSection = (): JSX.Element => {
               </ul>
 
               <Button className={`h-auto gap-2 px-6 py-3 rounded-full border border-solid transition-all duration-300 hover:scale-105 active:scale-95 ${scrolled
-                  ? "bg-[#031226] text-white hover:bg-[#031226]/90"
-                  : "bg-white text-black hover:bg-white/90"
+                ? "bg-[#031226] text-white hover:bg-[#031226]/90"
+                : "bg-white text-black hover:bg-white/90"
                 }`}>
-                <span className="[font-family:'Montserrat',Helvetica] font-semibold text-base">
+                <span className="[font-family:'Montserrat',Helvetica] font-semibold text-sm">
                   Get a Free Consultation
                 </span>
                 <img
@@ -188,30 +188,30 @@ export const HeroSection = (): JSX.Element => {
           </Badge>
 
           <div className="flex flex-col items-center gap-6 translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
-            <h1 className="max-w-[1314px] px-4 [font-family:'Montserrat',Helvetica] font-semibold text-white text-4xl md:text-6xl lg:text-[100px] text-center tracking-[-3.15px] leading-tight md:leading-[108px]">
-              Future-Proof SEO Strategy for B2B Growth
+            <h1 className="max-w-[1000px] px-4 [font-family:'Montserrat',Helvetica] font-semibold text-white text-3xl md:text-5xl lg:text-[64px] text-center tracking-[-2px] leading-tight md:leading-[72px]">
+              Future-Proof SEO Strategy<br />for B2B Growth
             </h1>
 
             <img
-              className="flex-[0_0_auto]"
+              className="flex-[0_0_auto] max-w-[600px] max-h-[40px]"
               alt="Decorative line"
               src="https://c.animaapp.com/mlna8z4qvTbWDz/img/container-8.svg"
             />
 
-            <p className="max-w-[768px] px-4 [font-family:'Montserrat',Helvetica] font-normal text-[#c2c2c2] text-lg md:text-2xl lg:text-3xl text-center tracking-[0] leading-relaxed md:leading-10">
-              We build and execute data-driven content strategies that boost
-              rankings, engagement, and brand awareness and improve ROI.
+            <p className="px-4 [font-family:'Montserrat',Helvetica] font-normal text-[#c2c2c2] text-base md:text-lg lg:text-xl text-center tracking-[0] leading-relaxed md:leading-8">
+              We build and execute data-driven content strategies that boost rankings, engagement,<br />
+              and brand awareness and improve ROI.
             </p>
           </div>
         </div>
 
         <div className="flex items-center justify-center w-full translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:600ms]">
-          <Button className="h-auto flex items-center justify-center gap-[9.32px] px-[27.96px] py-[13.98px] bg-white text-black rounded-[931.87px] border-[1.16px] border-solid hover:bg-white/90 transition-all hover:scale-105 active:scale-95">
-            <span className="[font-family:'Montserrat',Helvetica] font-semibold text-lg md:text-xl text-center tracking-[0] leading-[28.0px] whitespace-nowrap">
+          <Button className="h-auto flex items-center justify-center gap-2 px-6 py-3 bg-white text-black rounded-[931.87px] border-[1.16px] border-solid hover:bg-white/90 transition-all hover:scale-105 active:scale-95">
+            <span className="[font-family:'Montserrat',Helvetica] font-semibold text-sm md:text-base text-center tracking-[0] leading-[22px] whitespace-nowrap">
               Get a Free Consultation
             </span>
             <img
-              className="w-[23.3px] h-[23.3px]"
+              className="w-[18px] h-[18px]"
               alt="Arrow"
               src="https://c.animaapp.com/mlna8z4qvTbWDz/img/container.svg"
             />
@@ -221,13 +221,13 @@ export const HeroSection = (): JSX.Element => {
 
       {/* Logo Strip */}
       <div className="flex flex-col max-w-[1440px] w-full items-center gap-4 px-4 translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:800ms] z-10">
-        <p className="[font-family:'Montserrat',Helvetica] font-medium text-[#c2c2c2b2] text-lg md:text-2xl tracking-[0] leading-[34px] text-center">
+        <p className="[font-family:'Montserrat',Helvetica] font-medium text-[#c2c2c2b2] text-sm md:text-base tracking-[0] leading-[24px] text-center">
           Trusted by growing B2B SaaS companies
         </p>
 
-        <div className="w-full h-[55px] overflow-hidden">
+        <div className="w-full h-[42px] overflow-hidden">
           <img
-            className="w-full h-[55px] object-contain opacity-60"
+            className="w-full h-[42px] object-contain opacity-85 contrast-125 brightness-110"
             alt="Company logos"
             src="https://c.animaapp.com/mlna8z4qvTbWDz/img/container-16.svg"
           />

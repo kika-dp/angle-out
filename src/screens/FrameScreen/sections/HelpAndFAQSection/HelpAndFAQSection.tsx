@@ -162,14 +162,14 @@ const ScrollColumn = ({ items, direction, duration }: ScrollColumnProps) => {
 
 export const HelpAndFAQSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col w-full items-center justify-center gap-8 px-0 py-[100px] relative bg-[linear-gradient(0deg,rgba(15,24,41,1)_0%,rgba(15,24,41,1)_100%),linear-gradient(180deg,rgba(42,53,106,1)_0%,rgba(0,0,1,1)_100%)]">
+    <section className="flex flex-col w-full items-center justify-center gap-6 px-0 py-[60px] relative bg-[linear-gradient(0deg,rgba(15,24,41,1)_0%,rgba(15,24,41,1)_100%),linear-gradient(180deg,rgba(42,53,106,1)_0%,rgba(0,0,1,1)_100%)]">
       <header className="flex items-center justify-center relative w-full">
-        <h2 className="translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms] font-semibold text-white text-[54px] tracking-[-2.00px] leading-[64px] [font-family:'Montserrat',Helvetica]">
+        <h2 className="translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms] font-semibold text-white text-[40px] tracking-[-1.5px] leading-[48px] [font-family:'Montserrat',Helvetica]">
           Wall Of Love
         </h2>
       </header>
 
-      <div className="relative w-full max-w-[1441px] h-[813px] overflow-hidden">
+      <div className="relative w-full max-w-[1200px] h-[600px] overflow-hidden">
         {/* 3-column grid */}
         <div className="grid grid-cols-3 gap-5 h-full px-4">
           <ScrollColumn items={column1} direction="up" duration={30} />

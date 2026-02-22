@@ -77,31 +77,31 @@ export const ComparisonFeaturesSection = (): JSX.Element => {
   }, []);
 
   return (
-    <section className="flex flex-col w-full items-center gap-[100px] px-4 md:px-16 lg:px-20 py-[100px] bg-[linear-gradient(0deg,rgba(210,233,255,1)_0%,rgba(245,245,249,1)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]">
+    <section className="flex flex-col w-full items-center gap-[60px] px-4 md:px-16 lg:px-20 py-[60px] bg-[linear-gradient(0deg,rgba(210,233,255,1)_0%,rgba(245,245,249,1)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]">
       {features.map((feature, index) => (
         <div
           key={index}
           ref={(el) => (itemRefs.current[index] = el)}
-          className={`flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-20 w-full transition-all duration-700 ${visibleItems[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+          className={`flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-14 w-full max-w-[1200px] transition-all duration-700 ${visibleItems[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`}
         >
           {feature.imagePosition === "left" && (
-            <div className="flex flex-col max-w-full lg:max-w-[680px] w-full lg:w-[680px] items-start relative group">
+            <div className="flex flex-col max-w-full lg:max-w-[540px] w-full lg:w-[540px] items-start relative group">
               {feature.hasBlur && (
                 <div className="absolute w-[50.00%] h-full top-0 left-[50.00%] blur-[95.2px] [background:radial-gradient(50%_50%_at_50%_50%,rgba(158,168,251,1)_0%,rgba(158,168,251,0)_100%)]" />
               )}
 
               <div
-                className={`relative self-stretch w-full h-[391.39px] bg-cover bg-center transition-transform duration-500 group-hover:scale-105 ${feature.hasBorder
-                    ? "rounded-[11.3px] border-[2.05px] border-solid border-[#12131c] shadow-[8px_8px_0px_#12131c]"
-                    : ""
+                className={`relative self-stretch w-full h-[320px] bg-cover bg-center transition-transform duration-500 group-hover:scale-105 ${feature.hasBorder
+                  ? "rounded-[11.3px] border-[2.05px] border-solid border-[#12131c] shadow-[8px_8px_0px_#12131c]"
+                  : ""
                   }`}
                 style={{ backgroundImage: `url(${feature.imageUrl})` }}
               />
             </div>
           )}
 
-          <div className="flex flex-col w-full lg:w-[680px] items-start gap-4">
+          <div className="flex flex-col w-full lg:w-[540px] items-start gap-3">
             <div className="flex flex-col items-start w-full">
               <span className="[font-family:'Roboto',Helvetica] font-bold text-[#9ea8fb] text-sm tracking-[1.00px] leading-[21px] whitespace-nowrap">
                 {feature.tag}
@@ -110,17 +110,17 @@ export const ComparisonFeaturesSection = (): JSX.Element => {
 
             <div className="flex flex-col items-start gap-8 w-full">
               <div className="flex flex-col items-start gap-5 w-full">
-                <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-3xl lg:text-5xl tracking-[-2.00px] leading-tight lg:leading-[56px]">
+                <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-2xl lg:text-[36px] tracking-[-1.5px] leading-tight lg:leading-[44px]">
                   {feature.title}
                 </h2>
 
-                <p className="[font-family:'Montserrat',Helvetica] font-normal text-[#12131c] text-lg lg:text-xl tracking-[0] leading-[30px]">
+                <p className="[font-family:'Montserrat',Helvetica] font-normal text-[#12131c] text-base lg:text-lg tracking-[0] leading-[26px]">
                   {feature.description}
                 </p>
               </div>
 
               <Button className="inline-flex items-center justify-center gap-[9.32px] px-[27.96px] py-[13.98px] h-auto bg-[#031226] hover:bg-[#031226]/90 rounded-full border-[1.16px] border-solid transition-all hover:scale-105 active:scale-95">
-                <span className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-lg lg:text-xl text-center tracking-[0] leading-[28.0px] whitespace-nowrap">
+                <span className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-base lg:text-lg text-center tracking-[0] leading-[24px] whitespace-nowrap">
                   {feature.buttonText}
                 </span>
                 <ArrowRightIcon className="w-[23.3px] h-[23.3px]" />
@@ -129,15 +129,15 @@ export const ComparisonFeaturesSection = (): JSX.Element => {
           </div>
 
           {feature.imagePosition === "right" && (
-            <div className="flex flex-col max-w-full lg:max-w-[680px] w-full lg:w-[680px] items-start relative group">
+            <div className="flex flex-col max-w-full lg:max-w-[540px] w-full lg:w-[540px] items-start relative group">
               {feature.hasBlur && (
                 <div className="absolute w-[50.00%] h-full top-0 left-[50.00%] blur-[95.2px] [background:radial-gradient(50%_50%_at_50%_50%,rgba(158,168,251,1)_0%,rgba(158,168,251,0)_100%)]" />
               )}
 
               <div
-                className={`relative self-stretch w-full h-[391.39px] bg-cover bg-center transition-transform duration-500 group-hover:scale-105 ${feature.hasBorder
-                    ? "rounded-[11.3px] border-[2.05px] border-solid border-[#12131c] shadow-[8px_8px_0px_#12131c]"
-                    : ""
+                className={`relative self-stretch w-full h-[320px] bg-cover bg-center transition-transform duration-500 group-hover:scale-105 ${feature.hasBorder
+                  ? "rounded-[11.3px] border-[2.05px] border-solid border-[#12131c] shadow-[8px_8px_0px_#12131c]"
+                  : ""
                   }`}
                 style={{ backgroundImage: `url(${feature.imageUrl})` }}
               />

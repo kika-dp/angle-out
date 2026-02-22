@@ -49,13 +49,13 @@ export const FooterSection = (): JSX.Element => {
               variant="outline"
               className="h-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white rounded-full border border-solid hover:bg-gray-50 transition-all hover:scale-105 active:scale-95"
             >
-              <span className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-xl text-center tracking-[0] leading-7 whitespace-nowrap">
+              <span className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-base text-center tracking-[0] leading-6 whitespace-nowrap">
                 Get a Free Consultation
               </span>
               <ArrowRightIcon className="w-6 h-6 text-[#031226]" />
             </Button>
 
-            <p className="[font-family:'DM_Sans',Helvetica] font-normal text-[#ffffff80] text-lg tracking-[0] leading-6 whitespace-nowrap">
+            <p className="[font-family:'DM_Sans',Helvetica] font-normal text-[#ffffff80] text-sm tracking-[0] leading-5 whitespace-nowrap">
               Copyright © 2026 AngleOut
             </p>
           </div>
@@ -63,7 +63,7 @@ export const FooterSection = (): JSX.Element => {
           {/* Right: Navigation columns */}
           <nav className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 lg:gap-16 translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
             <div className="flex flex-col items-start gap-5">
-              <h3 className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-xl tracking-[0] leading-[23.4px]">
+              <h3 className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-lg tracking-[0] leading-[20px]">
                 Socials
               </h3>
 
@@ -77,7 +77,7 @@ export const FooterSection = (): JSX.Element => {
                       className="inline-flex items-center gap-2 hover:opacity-80 transition-all hover:translate-x-1"
                     >
                       <social.icon className="w-6 h-6 text-[#565c6b]" />
-                      <span className="[font-family:'Fira_Sans',Helvetica] font-normal text-[#565c6b] text-lg tracking-[0] leading-6 whitespace-nowrap">
+                      <span className="[font-family:'Fira_Sans',Helvetica] font-normal text-[#565c6b] text-base tracking-[0] leading-5 whitespace-nowrap">
                         {social.label}
                       </span>
                     </a>
@@ -97,7 +97,7 @@ export const FooterSection = (): JSX.Element => {
                     <a
                       href={service.href}
                       onClick={(e) => handleSmoothScroll(e, service.href)}
-                      className="[font-family:'Fira_Sans',Helvetica] font-normal text-[#565c6b] text-lg tracking-[0] leading-6 whitespace-nowrap hover:text-[#7a8090] transition-all hover:translate-x-1 inline-block"
+                      className="[font-family:'Fira_Sans',Helvetica] font-normal text-[#565c6b] text-base tracking-[0] leading-5 whitespace-nowrap hover:text-[#7a8090] transition-all hover:translate-x-1 inline-block"
                     >
                       {service.label}
                     </a>
@@ -131,7 +131,7 @@ export const FooterSection = (): JSX.Element => {
                 Location
               </h3>
 
-              <address className="not-italic [font-family:'Fira_Sans',Helvetica] font-normal text-[#565c6b] text-lg tracking-[0] leading-7">
+              <address className="not-italic [font-family:'Fira_Sans',Helvetica] font-normal text-[#565c6b] text-base tracking-[0] leading-6">
                 <a href="mailto:search@angleout.io" className="hover:text-[#7a8090] transition-colors">
                   search@angleout.io
                 </a>

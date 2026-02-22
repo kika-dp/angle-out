@@ -51,16 +51,16 @@ export const ClientTestimonialsSection = (): JSX.Element => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="flex flex-col w-full items-center justify-center gap-[50px] px-4 md:px-16 lg:px-20 py-[100px] bg-white">
-      <div className="flex flex-col w-full max-w-[1440px] items-start gap-20">
+    <section ref={sectionRef} className="flex flex-col w-full items-center justify-center gap-[40px] px-4 md:px-16 lg:px-20 py-[60px] bg-white">
+      <div className="flex flex-col w-full max-w-[1200px] items-start gap-14">
         <header className={`flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 w-full transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="flex flex-col items-center">
-            <h2 className="bg-[linear-gradient(180deg,rgba(42,53,106,1)_0%,rgba(15,24,41,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Poppins',Helvetica] font-semibold text-transparent text-3xl md:text-[54px] text-center leading-tight md:leading-[64px] tracking-[0] whitespace-nowrap">
+            <h2 className="bg-[linear-gradient(180deg,rgba(42,53,106,1)_0%,rgba(15,24,41,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Poppins',Helvetica] font-semibold text-transparent text-2xl md:text-[40px] text-center leading-tight md:leading-[48px] tracking-[0] whitespace-nowrap">
               AngleOut
             </h2>
           </div>
 
-          <span className="[font-family:'Poppins',Helvetica] font-semibold text-[#212529] text-3xl md:text-[54px] text-center tracking-[0] leading-[67.2px]">
+          <span className="[font-family:'Poppins',Helvetica] font-semibold text-[#212529] text-2xl md:text-[40px] text-center tracking-[0] leading-[50px]">
             vs
           </span>
 
@@ -70,7 +70,7 @@ export const ClientTestimonialsSection = (): JSX.Element => {
                 key={index}
                 className={`inline-flex items-center pt-[5.5px] pb-[5.7px] px-4 ${badge.bg} rounded-lg ${badge.rotation} h-auto hover:scale-105 transition-transform`}
               >
-                <span className="[font-family:'Poppins',Helvetica] font-semibold text-white text-xl md:text-[28px] text-center tracking-[0] leading-[39.2px] whitespace-nowrap">
+                <span className="[font-family:'Poppins',Helvetica] font-semibold text-white text-lg md:text-xl text-center tracking-[0] leading-[28px] whitespace-nowrap">
                   {badge.text}
                 </span>
               </Badge>
@@ -92,7 +92,7 @@ export const ClientTestimonialsSection = (): JSX.Element => {
                 {angleOutFeatures.map((feature, index) => (
                   <li key={index} className="flex items-center gap-4 w-full group">
                     <CheckIcon className="w-5 h-5 text-white flex-shrink-0 group-hover:scale-110 transition-transform" />
-                    <p className="flex-1 [font-family:'Poppins',Helvetica] font-normal text-white text-lg tracking-[0] leading-[30.6px]">
+                    <p className="flex-1 [font-family:'Poppins',Helvetica] font-normal text-white text-base tracking-[0] leading-[26px]">
                       {feature}
                     </p>
                   </li>
@@ -101,7 +101,7 @@ export const ClientTestimonialsSection = (): JSX.Element => {
 
               <div className="flex flex-col items-start pt-0 pb-10 px-5 w-full bg-[#0f1829] rounded-[0px_0px_8px_8px]">
                 <div className="flex flex-col sm:flex-row items-start gap-4 w-full">
-                  <Button className="inline-flex items-center justify-center gap-[9.32px] px-[27.96px] py-[13.98px] bg-white text-black rounded-full border-[1.16px] border-solid hover:bg-white/90 transition-all h-auto [font-family:'Montserrat',Helvetica] font-semibold text-xl hover:scale-105 active:scale-95">
+                  <Button className="inline-flex items-center justify-center gap-[9.32px] px-[24px] py-[12px] bg-white text-black rounded-full border-[1.16px] border-solid hover:bg-white/90 transition-all h-auto [font-family:'Montserrat',Helvetica] font-semibold text-base hover:scale-105 active:scale-95">
                     Get in Touch
                     <img
                       className="w-[23.3px] h-[23.3px]"
@@ -112,7 +112,7 @@ export const ClientTestimonialsSection = (): JSX.Element => {
 
                   <Button
                     variant="ghost"
-                    className="inline-flex items-center gap-2.5 px-7 py-4 rounded-lg text-white hover:bg-white/10 transition-all h-auto [font-family:'Montserrat',Helvetica] font-semibold text-xl"
+                    className="inline-flex items-center gap-2.5 px-6 py-3 rounded-lg text-white hover:bg-white/10 transition-all h-auto [font-family:'Montserrat',Helvetica] font-semibold text-base"
                   >
                     Read Success Stories
                     <img
@@ -137,7 +137,7 @@ export const ClientTestimonialsSection = (): JSX.Element => {
                   {inHouseFeatures.map((feature, index) => (
                     <li key={index} className="flex items-center gap-4 w-full group">
                       <XIcon className="w-5 h-5 text-[#212529] flex-shrink-0 group-hover:scale-110 transition-transform" />
-                      <p className="flex-1 [font-family:'Poppins',Helvetica] font-normal text-[#212529] text-lg tracking-[0] leading-[30.6px]">
+                      <p className="flex-1 [font-family:'Poppins',Helvetica] font-normal text-[#212529] text-base tracking-[0] leading-[26px]">
                         {feature}
                       </p>
                     </li>
