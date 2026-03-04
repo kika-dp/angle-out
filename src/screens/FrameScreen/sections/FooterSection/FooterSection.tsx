@@ -6,16 +6,18 @@ const socialLinks = [
     icon: YoutubeIcon,
     label: "Youtube",
     href: "https://youtube.com",
+    color: "hover:text-red-500"
   },
   {
     icon: LinkedinIcon,
     label: "Linkedin",
     href: "https://linkedin.com",
+    color: "hover:text-blue-500"
   },
 ];
 
 const serviceLinks = [
-  { label: "Paid media", href: "#services" },
+  { label: "Paid Media", href: "#services" },
   { label: "SEO Enablement", href: "#services" },
   { label: "SaaS PPC Agency", href: "#services" },
 ];
@@ -33,117 +35,122 @@ export const FooterSection = (): JSX.Element => {
       if (element) {
         const offset = 80;
         const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-        window.scrollTo({ top: elementPosition - offset, behavior: "smooth" });
+        window.scrollTo({ top: elementPosition - offset, behavior: behavior });
       }
     }
   };
 
-  return (
-    <footer className="flex flex-col items-center justify-center w-full bg-[#0f1829]">
-      <div className="flex flex-col max-w-[1440px] w-full px-6 md:px-16 lg:px-20 py-16 pb-12">
-        {/* Main footer content */}
-        <div className="flex flex-col lg:flex-row w-full items-start lg:items-start justify-between gap-12 lg:gap-16">
-          {/* Left: CTA + Copyright */}
-          <div className="flex flex-col items-start gap-8 flex-shrink-0 translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
-            <Button
-              variant="outline"
-              className="h-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white rounded-full border border-solid hover:bg-gray-50 transition-all hover:scale-105 active:scale-95"
-            >
-              <span className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-base text-center tracking-[0] leading-6 whitespace-nowrap">
-                Get a Free Consultation
-              </span>
-              <ArrowRightIcon className="w-6 h-6 text-[#031226]" />
-            </Button>
+  const behavior: ScrollBehavior = "smooth";
 
-            <p className="[font-family:'DM_Sans',Helvetica] font-normal text-[#ffffff80] text-sm tracking-[0] leading-5 whitespace-nowrap">
-              Copyright © 2026 AngleOut
+  return (
+    <footer className="footer-glow relative flex flex-col items-center justify-center w-full bg-[#0f1829] border-t border-white/5 overflow-hidden">
+      {/* Decorative Background */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1440px] h-full pointer-events-none">
+        <div className="absolute top-[-100px] right-[-100px] w-[500px] h-[500px] bg-[#4d6bfe]/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-100px] left-[-100px] w-[500px] h-[500px] bg-[#9ea8fb]/5 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="relative z-10 flex flex-col max-w-[1440px] w-full px-6 md:px-16 lg:px-20 py-20 pb-12">
+        <div className="flex flex-col lg:flex-row w-full items-start justify-between gap-16 lg:gap-24 mb-16">
+          {/* Brand Column */}
+          <div className="flex flex-col items-start gap-8 max-w-sm">
+            <h2 className={`[font-family:'Baloo_Bhaina-Regular',Helvetica] font-normal text-3xl text-white leading-none tracking-tight`}>
+              AngleOut.io
+            </h2>
+            <p className="[font-family:'Montserrat',Helvetica] font-medium text-white/50 text-base leading-relaxed">
+              Accelerating B2B SaaS growth through data-driven content strategies and premium SEO execution.
             </p>
+            <Button
+              className="group h-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-[#031226] rounded-full border border-solid hover:bg-white/95 transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+            >
+              <span className="[font-family:'Montserrat',Helvetica] font-bold text-base leading-6 whitespace-nowrap">
+                Start Growing
+              </span>
+              <ArrowRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </Button>
           </div>
 
-          {/* Right: Navigation columns */}
-          <nav className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 lg:gap-16 translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
-            <div className="flex flex-col items-start gap-5">
-              <h3 className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-lg tracking-[0] leading-[20px]">
-                Socials
+          {/* Navigation Grid */}
+          <nav className="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-16 flex-1">
+            <div className="flex flex-col items-start gap-6">
+              <h3 className="[font-family:'Montserrat',Helvetica] font-bold text-white text-sm tracking-[0.1em] uppercase opacity-40">
+                Services
               </h3>
-
               <ul className="flex flex-col items-start gap-4">
-                {socialLinks.map((social, index) => (
+                {serviceLinks.map((link, index) => (
                   <li key={index}>
                     <a
+                      href={link.href}
+                      onClick={(e) => handleSmoothScroll(e, link.href)}
+                      className="[font-family:'Montserrat',Helvetica] font-medium text-white/60 text-base hover:text-white transition-all hover:translate-x-1 inline-block"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="flex flex-col items-start gap-6">
+              <h3 className="[font-family:'Montserrat',Helvetica] font-bold text-white text-sm tracking-[0.1em] uppercase opacity-40">
+                Resources
+              </h3>
+              <ul className="flex flex-col items-start gap-4">
+                {resourceLinks.map((link, index) => (
+                  <li key={index}>
+                    <a
+                      href={link.href}
+                      onClick={(e) => handleSmoothScroll(e, link.href)}
+                      className="[font-family:'Montserrat',Helvetica] font-medium text-white/60 text-base hover:text-white transition-all hover:translate-x-1 inline-block"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="flex flex-col items-start gap-6 col-span-2 md:col-span-1">
+              <h3 className="[font-family:'Montserrat',Helvetica] font-bold text-white text-sm tracking-[0.1em] uppercase opacity-40">
+                Contact
+              </h3>
+              <div className="flex flex-col gap-4">
+                <a href="mailto:search@angleout.io" className="[font-family:'Montserrat',Helvetica] font-semibold text-white/80 text-lg hover:text-[#4d6bfe] transition-colors decoration-1 underline-offset-4 hover:underline">
+                  search@angleout.io
+                </a>
+                <p className="[font-family:'Montserrat',Helvetica] font-medium text-white/50 text-base leading-6">
+                  Bangalore, India<br />
+                  Global SaaS SEO Agency
+                </p>
+                <div className="flex gap-4 mt-2">
+                  {socialLinks.map((social, index) => (
+                    <a
+                      key={index}
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 hover:opacity-80 transition-all hover:translate-x-1"
+                      className={`p-2.5 rounded-full bg-white/5 text-white/60 transition-all hover:bg-white/10 ${social.color} hover:scale-110`}
+                      aria-label={social.label}
                     >
-                      <social.icon className="w-6 h-6 text-[#565c6b]" />
-                      <span className="[font-family:'Fira_Sans',Helvetica] font-normal text-[#565c6b] text-base tracking-[0] leading-5 whitespace-nowrap">
-                        {social.label}
-                      </span>
+                      <social.icon className="w-5 h-5" />
                     </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="flex flex-col items-start gap-5">
-              <h3 className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-xl tracking-[0] leading-[23.4px]">
-                Services
-              </h3>
-
-              <ul className="flex flex-col items-start gap-4">
-                {serviceLinks.map((service, index) => (
-                  <li key={index}>
-                    <a
-                      href={service.href}
-                      onClick={(e) => handleSmoothScroll(e, service.href)}
-                      className="[font-family:'Fira_Sans',Helvetica] font-normal text-[#565c6b] text-base tracking-[0] leading-5 whitespace-nowrap hover:text-[#7a8090] transition-all hover:translate-x-1 inline-block"
-                    >
-                      {service.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="flex flex-col items-start gap-5">
-              <h3 className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-xl tracking-[0] leading-[23.4px]">
-                Resources
-              </h3>
-
-              <ul className="flex flex-col items-start gap-4">
-                {resourceLinks.map((resource, index) => (
-                  <li key={index}>
-                    <a
-                      href={resource.href}
-                      onClick={(e) => handleSmoothScroll(e, resource.href)}
-                      className="[font-family:'Fira_Sans',Helvetica] font-normal text-[#565c6b] text-lg tracking-[0] leading-6 whitespace-nowrap hover:text-[#7a8090] transition-all hover:translate-x-1 inline-block"
-                    >
-                      {resource.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="flex flex-col items-start gap-5">
-              <h3 className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-xl tracking-[0] leading-[23.4px]">
-                Location
-              </h3>
-
-              <address className="not-italic [font-family:'Fira_Sans',Helvetica] font-normal text-[#565c6b] text-base tracking-[0] leading-6">
-                <a href="mailto:search@angleout.io" className="hover:text-[#7a8090] transition-colors">
-                  search@angleout.io
-                </a>
-                <br />
-                Bangalore SaaS SEO Agency
-              </address>
+                  ))}
+                </div>
+              </div>
             </div>
           </nav>
         </div>
 
-        {/* Bottom divider */}
-        <div className="w-full h-px bg-[#ffffff15] mt-12" />
+        {/* Footer Bottom */}
+        <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 pt-12 border-t border-white/5">
+          <p className="[font-family:'Montserrat',Helvetica] font-medium text-white/30 text-sm">
+            © 2026 AngleOut. All rights reserved.
+          </p>
+          <div className="flex gap-8">
+            <a href="#" className="[font-family:'Montserrat',Helvetica] font-medium text-white/30 text-sm hover:text-white/60 transition-colors">Privacy Policy</a>
+            <a href="#" className="[font-family:'Montserrat',Helvetica] font-medium text-white/30 text-sm hover:text-white/60 transition-colors">Terms of Service</a>
+          </div>
+        </div>
       </div>
     </footer>
   );

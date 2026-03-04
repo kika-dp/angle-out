@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { MenuIcon, XIcon } from "lucide-react";
 import { Badge } from "../../../../components/ui/badge";
 import { Button } from "../../../../components/ui/button";
+import { motion } from "framer-motion";
 
 const navItems = [
   { label: "Home", href: "#" },
@@ -56,60 +57,94 @@ export const HeroSection = (): JSX.Element => {
   };
 
   return (
-    <section className="flex flex-col items-center gap-[60px] pt-0 pb-[60px] px-0 relative w-full overflow-hidden bg-[linear-gradient(0deg,rgba(15,24,41,1)_0%,rgba(15,24,41,1)_100%),linear-gradient(0deg,rgba(210,233,255,1)_0%,rgba(245,245,249,1)_100%)]">
-      <div className="absolute top-[-310px] right-[-270px] w-[758px] h-[758px] bg-[#7b94ff40] rounded-[379px] blur-[125px]" />
+    <section className="flex flex-col items-center gap-[60px] pt-0 pb-[60px] px-0 relative w-full overflow-hidden bg-[#0f1829]">
+      <motion.div
+        animate={{
+          y: [0, -20, 0],
+          x: [0, 20, 0],
+          scale: [1, 1.05, 1]
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute top-[-310px] right-[-270px] w-[758px] h-[758px] bg-[#7b94ff30] rounded-[379px] blur-[125px] pointer-events-none"
+      />
+
+      <motion.div
+        animate={{
+          y: [0, 20, 0],
+          x: [0, -20, 0],
+          scale: [1, 1.1, 1]
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute top-[264px] left-[-300px] w-[758px] h-[758px] bg-[#7b94ff20] rounded-[379px] blur-[125px] pointer-events-none"
+      />
 
       <img
-        className="absolute top-0 left-0 w-full h-[1046px] object-cover"
+        className="absolute top-0 left-0 w-full h-[1046px] object-cover opacity-60"
         alt="Background gradient"
         src="https://c.animaapp.com/mlna8z4qvTbWDz/img/group-1000003957.png"
       />
 
       {/* Sticky Header */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-        ? "bg-white shadow-[0_2px_20px_rgba(0,0,0,0.08)] backdrop-blur-md"
-        : "bg-transparent"
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+        ? "bg-white/80 backdrop-blur-xl border-b border-black/[0.05] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)]"
+        : "bg-transparent border-b border-transparent"
         }`}>
-        <nav className="flex min-h-[72px] items-center justify-center px-4 md:px-10 py-0 relative w-full">
+        <nav className="flex min-h-[80px] items-center justify-center px-4 md:px-10 py-0 relative w-full transition-all duration-500">
           <div className="flex max-w-[1440px] w-full items-center justify-between">
             <a
               href="#"
               onClick={(e) => handleNavClick(e, "#", "Home")}
-              className={`[font-family:'Baloo_Bhaina-Regular',Helvetica] font-normal text-2xl md:text-3xl leading-10 tracking-[0] whitespace-nowrap hover:opacity-80 transition-all duration-300 ${scrolled ? "text-[#031226]" : "text-white"
+              className={`[font-family:'Baloo_Bhaina-Regular',Helvetica] font-normal text-2xl md:text-3xl leading-10 tracking-tight whitespace-nowrap hover:opacity-80 transition-all duration-300 ${scrolled ? "text-black" : "text-white"
                 }`}
             >
               AngleOut.io
             </a>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center justify-between gap-6 flex-1 max-w-[1266px] pl-6">
-              <ul className="flex items-center gap-0">
+            <div className="hidden md:flex items-center justify-between gap-8 flex-1 max-w-[1266px] pl-10">
+              <ul className="flex items-center gap-2">
                 {navItems.map((item, index) => (
-                  <li key={index}>
+                  <li key={index} className="relative group">
                     <a href={item.href} onClick={(e) => handleNavClick(e, item.href, item.label)}>
                       <Button
                         variant="ghost"
-                        className={`h-auto px-5 py-3 text-sm [font-family:'Roboto',Helvetica] font-normal transition-all duration-300 ${scrolled
-                          ? `text-[#031226] hover:bg-[#031226]/5 ${activeSection === item.label ? "bg-[#031226]/10 font-semibold" : ""}`
-                          : `text-white hover:bg-white/10 ${activeSection === item.label ? "bg-white/10 font-semibold" : ""}`
-                          }`}
+                        className={`h-auto px-5 py-2.5 text-sm [font-family:'Montserrat',Helvetica] font-medium transition-all duration-300 rounded-full ${scrolled
+                          ? `text-[#031226] hover:bg-[#031226]/5`
+                          : `text-white hover:bg-white/10`
+                          } ${activeSection === item.label ? "font-bold" : ""}`}
                       >
                         {item.label}
                       </Button>
+                      {activeSection === item.label && (
+                        <motion.div
+                          layoutId="activeNavHighlight"
+                          className={`absolute inset-0 rounded-full z-[-1] transition-colors duration-300 ${scrolled ? "bg-[#031226]/5 shadow-sm" : "bg-white/10 backdrop-blur-sm"
+                            }`}
+                          transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                        />
+                      )}
                     </a>
                   </li>
                 ))}
               </ul>
 
-              <Button className={`h-auto gap-2 px-6 py-3 rounded-full border border-solid transition-all duration-300 hover:scale-105 active:scale-95 ${scrolled
-                ? "bg-[#031226] text-white hover:bg-[#031226]/90"
-                : "bg-white text-black hover:bg-white/90"
+              <Button className={`h-auto gap-2 px-7 py-3.5 rounded-full border border-solid transition-all duration-300 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg ${scrolled
+                ? "bg-[#031226] text-white border-[#031226] hover:bg-[#031226]/90"
+                : "bg-white text-black border-white hover:bg-white/95"
                 }`}>
-                <span className="[font-family:'Montserrat',Helvetica] font-semibold text-sm">
+                <span className="[font-family:'Montserrat',Helvetica] font-bold text-sm">
                   Get a Free Consultation
                 </span>
                 <img
-                  className={`w-5 h-5 transition-all duration-300 ${scrolled ? "invert" : ""}`}
+                  className={`w-4 h-4 transition-all duration-300 ${scrolled ? "invert" : ""}`}
                   alt="Arrow"
                   src="https://c.animaapp.com/mlna8z4qvTbWDz/img/container.svg"
                 />
@@ -119,7 +154,9 @@ export const HeroSection = (): JSX.Element => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`md:hidden p-2 rounded-lg transition-colors z-50 ${scrolled ? "text-[#031226] hover:bg-[#031226]/10" : "text-white hover:bg-white/10"
+              className={`md:hidden p-2.5 rounded-full transition-all duration-300 z-50 ${scrolled
+                ? "text-black bg-black/5 hover:bg-black/10"
+                : "text-white bg-white/10 hover:bg-white/20"
                 }`}
               aria-label="Toggle menu"
             >
@@ -170,57 +207,78 @@ export const HeroSection = (): JSX.Element => {
       <div className="absolute top-[264px] right-[1624px] w-[758px] h-[758px] bg-[#7b94ff40] rounded-[379px] blur-[125px]" />
 
       <div className="flex flex-col items-center gap-12 relative w-full px-4 z-10">
-        <div className="flex flex-col items-center gap-5 translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms]">
-          <Badge className="h-auto flex items-center justify-center gap-[10.77px] px-[25.13px] py-[9.57px] bg-[#f5f5f933] rounded-[957.3px] border-[1.2px] border-solid border-[#dedee9] backdrop-blur-[2.0px] backdrop-brightness-[110%] [-webkit-backdrop-filter:blur(2.0px)_brightness(110%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.40),inset_1px_0_0_rgba(255,255,255,0.32),inset_0_-1px_1px_rgba(0,0,0,0.13),inset_-1px_0_1px_rgba(0,0,0,0.11)] hover:bg-[#f5f5f933] transition-all hover:scale-105">
-            <img
-              className="w-[25.13px] h-[23.06px]"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col items-center gap-5"
+        >
+          <Badge className="h-auto flex items-center justify-center gap-2.5 px-6 py-2 bg-white/10 rounded-full border border-white/20 backdrop-blur-md shadow-lg hover:bg-white/20 transition-all hover:scale-105 cursor-default">
+            <motion.img
+              animate={{
+                scale: [1, 1.15, 1],
+                rotate: [0, 5, -5, 0]
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="w-[20px] h-[20px]"
               alt="Trust icon"
               src="https://c.animaapp.com/mlna8z4qvTbWDz/img/vector.svg"
             />
-            <span className="[font-family:'Roboto',Helvetica] font-normal text-white text-[14.4px] text-center tracking-[0] leading-[21.5px] whitespace-nowrap">
+            <span className="[font-family:'Montserrat',Helvetica] font-medium text-white text-xs md:text-sm text-center tracking-wide whitespace-nowrap">
               Trusted by 100+ Clients Worldwide
             </span>
-            <img
-              className="flex-[0_0_auto]"
-              alt="Decoration"
-              src="https://c.animaapp.com/mlna8z4qvTbWDz/img/container-12.svg"
-            />
           </Badge>
 
-          <div className="flex flex-col items-center gap-6 translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
-            <h1 className="max-w-[1000px] px-4 [font-family:'Montserrat',Helvetica] font-semibold text-white text-3xl md:text-5xl lg:text-[64px] text-center tracking-[-2px] leading-tight md:leading-[72px]">
-              Future-Proof SEO Strategy<br />for B2B Growth
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col items-center gap-6"
+          >
+            <h1 className="max-w-[1100px] px-4 [font-family:'Montserrat',Helvetica] font-extrabold text-white text-[clamp(2rem,6vw,4.5rem)] text-center tracking-tighter leading-[1.05] drop-shadow-2xl">
+              Future-Proof SEO Strategy<br />for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4d6bfe] to-[#9ea8fb]">B2B Growth</span>
             </h1>
 
-            <img
-              className="flex-[0_0_auto] max-w-[600px] max-h-[40px]"
-              alt="Decorative line"
-              src="https://c.animaapp.com/mlna8z4qvTbWDz/img/container-8.svg"
-            />
+            <div className="w-24 h-1.5 bg-[#4d6bfe] rounded-full" />
 
-            <p className="px-4 [font-family:'Montserrat',Helvetica] font-normal text-[#c2c2c2] text-base md:text-lg lg:text-xl text-center tracking-[0] leading-relaxed md:leading-8">
-              We build and execute data-driven content strategies that boost rankings, engagement,<br />
+            <p className="max-w-[800px] px-4 [font-family:'Montserrat',Helvetica] font-medium text-white/70 text-base md:text-xl text-center tracking-normal leading-relaxed">
+              We build and execute data-driven content strategies that boost rankings, engagement,
               and brand awareness and improve ROI.
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="flex items-center justify-center w-full translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:600ms]">
-          <Button className="h-auto flex items-center justify-center gap-2 px-6 py-3 bg-white text-black rounded-[931.87px] border-[1.16px] border-solid hover:bg-white/90 transition-all hover:scale-105 active:scale-95">
-            <span className="[font-family:'Montserrat',Helvetica] font-semibold text-sm md:text-base text-center tracking-[0] leading-[22px] whitespace-nowrap">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="flex items-center justify-center w-full"
+        >
+          <Button className="group relative h-auto flex items-center justify-center gap-2 px-8 py-4 bg-white text-black rounded-full border-[1.16px] border-solid hover:bg-white/95 transition-all hover:scale-105 active:scale-95 overflow-hidden shadow-lg hover:shadow-white/20">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 to-transparent -translate-x-full group-hover:animate-shimmer" />
+            <span className="relative z-10 [font-family:'Montserrat',Helvetica] font-semibold text-sm md:text-base text-center tracking-[0] leading-[22px] whitespace-nowrap">
               Get a Free Consultation
             </span>
             <img
-              className="w-[18px] h-[18px]"
+              className="relative z-10 w-[18px] h-[18px]"
               alt="Arrow"
               src="https://c.animaapp.com/mlna8z4qvTbWDz/img/container.svg"
             />
           </Button>
-        </div>
+        </motion.div>
       </div>
 
       {/* Logo Strip */}
-      <div className="flex flex-col max-w-[1440px] w-full items-center gap-4 px-4 translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:800ms] z-10">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.6 }}
+        className="flex flex-col max-w-[1440px] w-full items-center gap-4 px-4 z-10"
+      >
         <p className="[font-family:'Montserrat',Helvetica] font-medium text-[#c2c2c2b2] text-sm md:text-base tracking-[0] leading-[24px] text-center">
           Trusted by growing B2B SaaS companies
         </p>
@@ -232,7 +290,7 @@ export const HeroSection = (): JSX.Element => {
             src="https://c.animaapp.com/mlna8z4qvTbWDz/img/container-16.svg"
           />
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

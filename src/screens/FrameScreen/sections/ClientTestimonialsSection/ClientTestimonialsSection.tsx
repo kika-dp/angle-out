@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { CheckIcon, XIcon } from "lucide-react";
+import { CheckIcon, ArrowDown } from "lucide-react";
 import { Badge } from "../../../../components/ui/badge";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
@@ -9,7 +9,7 @@ const angleOutFeatures = [
   "Tools for your growth — project management, social media, outreach, automation, UX, mentorship.",
   "Solutions that elevate — research, content creation, audience engagement, visuals, strategy, coaching.",
   "Complete toolkit — data analysis, advertising, community building, optimization, design, support.",
-  "Comprehensive resources — storytelling, outreach, performance metrics,",
+  "Comprehensive resources — storytelling, outreach, performance metrics.",
 ];
 
 const inHouseFeatures = [
@@ -20,13 +20,24 @@ const inHouseFeatures = [
   "You can't tackle every task solo — it's wise to find more freelance help.",
 ];
 
+const freelancerFeatures = [
+  "Freelancers can offer specialized skills that enhance your project.",
+  "Expand your reach by utilizing freelancers for targeted campaigns.",
+  "Freelancers can bring fresh perspectives and innovative ideas.",
+  "Leverage freelancers to scale your efforts during peak times.",
+  "Freelancers often have flexible schedules, allowing for faster turnarounds.",
+  "Building relationships with freelancers can enrich your network.",
+  "Freelancers often have flexible schedules, allowing for faster turnarounds.",
+];
+
 const comparisonBadges = [
-  { text: "In-House Marketer", rotation: "-rotate-6", bg: "bg-[#1e1e1e]" },
-  { text: "Freelancer", rotation: "-rotate-1", bg: "bg-[#c8cfda]" },
+  { id: "in-house", text: "In-House Marketer", rotation: "-rotate-6" },
+  { id: "freelancer", text: "Freelancer", rotation: "-rotate-1" },
 ];
 
 export const ClientTestimonialsSection = (): JSX.Element => {
   const [isVisible, setIsVisible] = useState(false);
+  const [activeType, setActiveType] = useState<"in-house" | "freelancer">("in-house");
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -64,13 +75,17 @@ export const ClientTestimonialsSection = (): JSX.Element => {
             vs
           </span>
 
-          <div className="flex flex-col items-center md:items-start gap-2">
-            {comparisonBadges.map((badge, index) => (
+          <div className="flex flex-col items-center md:items-start gap-3">
+            {comparisonBadges.map((badge) => (
               <Badge
-                key={index}
-                className={`inline-flex items-center pt-[5.5px] pb-[5.7px] px-4 ${badge.bg} rounded-lg ${badge.rotation} h-auto hover:scale-105 transition-transform`}
+                key={badge.id}
+                onClick={() => setActiveType(badge.id as any)}
+                className={`inline-flex items-center pt-[5.5px] pb-[5.7px] px-4 cursor-pointer rounded-lg ${badge.rotation} h-auto transition-all duration-300 ${activeType === badge.id
+                  ? "bg-[#1e1e1e] text-white shadow-lg scale-110 z-10"
+                  : "bg-[#c8cfda] text-[#1e1e1e] hover:bg-[#b0b9c5]"
+                  }`}
               >
-                <span className="[font-family:'Poppins',Helvetica] font-semibold text-white text-lg md:text-xl text-center tracking-[0] leading-[28px] whitespace-nowrap">
+                <span className="[font-family:'Poppins',Helvetica] font-semibold text-lg md:text-xl text-center tracking-[0] leading-[28px] whitespace-nowrap">
                   {badge.text}
                 </span>
               </Badge>
@@ -78,7 +93,7 @@ export const ClientTestimonialsSection = (): JSX.Element => {
           </div>
         </header>
 
-        <div className={`flex flex-col lg:flex-row items-start justify-center gap-6 w-full transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`flex flex-col lg:flex-row items-stretch justify-center gap-6 w-full transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <Card className="flex-1 bg-[#0f1829] rounded-lg border-0 relative overflow-visible hover:shadow-2xl transition-all duration-300">
             <div className="absolute -top-16 left-[-43px] w-[287px] h-24 rotate-[-4.92deg] z-10">
               <div className="absolute top-0.5 -left-px w-72 h-[91px] bg-white rounded-[144.25px/45.63px] border-[3px] border-solid border-[#0f1829] rotate-[-6.07deg]" />
@@ -126,18 +141,19 @@ export const ClientTestimonialsSection = (): JSX.Element => {
             </CardContent>
           </Card>
 
-          <Card className="flex-1 rounded-lg border border-solid border-[#c8cfda] hover:shadow-xl transition-all duration-300">
-            <CardContent className="flex flex-col items-start pt-10 pb-0 px-8">
+          <Card className="flex-1 rounded-lg border border-solid border-[#c8cfda] hover:shadow-xl transition-all duration-500 overflow-hidden">
+            <CardContent className="flex flex-col items-start pt-10 pb-10 px-8">
               <div className="flex flex-col items-start gap-[19.3px] w-full">
                 <h3 className="[font-family:'Poppins',Helvetica] font-semibold text-[#212529] text-[28px] tracking-[0] leading-[39.2px]">
-                  With In-House Marketer
+                  {activeType === "in-house" ? "With In-House Marketer" : "With Freelancer"}
                 </h3>
 
-                <ul className="flex flex-col items-start gap-[19.2px] w-full list-none">
-                  {inHouseFeatures.map((feature, index) => (
+                <ul className={`flex flex-col items-start ${activeType === 'freelancer' ? 'gap-3' : 'gap-[19.2px]'} w-full list-none transition-all duration-300`}>
+                  {(activeType === "in-house" ? inHouseFeatures : freelancerFeatures).map((feature, index) => (
                     <li key={index} className="flex items-center gap-4 w-full group">
-                      <XIcon className="w-5 h-5 text-[#212529] flex-shrink-0 group-hover:scale-110 transition-transform" />
-                      <p className="flex-1 [font-family:'Poppins',Helvetica] font-normal text-[#212529] text-base tracking-[0] leading-[26px]">
+                      <ArrowDown className="w-5 h-5 text-[#c8cfda] flex-shrink-0 group-hover:translate-y-1 transition-transform" />
+                      <p className={`flex-1 [font-family:'Poppins',Helvetica] font-normal text-[#212529] tracking-[0] transition-all duration-300 ${activeType === 'freelancer' ? 'text-[15px] leading-[24px]' : 'text-base leading-[26px]'
+                        }`}>
                         {feature}
                       </p>
                     </li>

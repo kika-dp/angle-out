@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from "react";
 import { ArrowRightIcon } from "lucide-react";
 import { Button } from "../../../../components/ui/button";
+import { motion } from "framer-motion";
 
 const features = [
   {
@@ -42,48 +42,16 @@ const features = [
 ];
 
 export const ComparisonFeaturesSection = (): JSX.Element => {
-  const [visibleItems, setVisibleItems] = useState<boolean[]>([false, false, false]);
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    const observers = itemRefs.current.map((ref, index) => {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setVisibleItems((prev) => {
-              const newState = [...prev];
-              newState[index] = true;
-              return newState;
-            });
-          }
-        },
-        { threshold: 0.2 }
-      );
-
-      if (ref) {
-        observer.observe(ref);
-      }
-
-      return observer;
-    });
-
-    return () => {
-      observers.forEach((observer, index) => {
-        if (itemRefs.current[index]) {
-          observer.unobserve(itemRefs.current[index]!);
-        }
-      });
-    };
-  }, []);
-
   return (
-    <section className="flex flex-col w-full items-center gap-[60px] px-4 md:px-16 lg:px-20 py-[60px] bg-[linear-gradient(0deg,rgba(210,233,255,1)_0%,rgba(245,245,249,1)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]">
+    <section className="flex flex-col w-full items-center gap-[100px] px-4 md:px-16 lg:px-20 py-[60px] bg-[linear-gradient(0deg,rgba(210,233,255,1)_0%,rgba(245,245,249,1)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)] overflow-hidden">
       {features.map((feature, index) => (
-        <div
+        <motion.div
           key={index}
-          ref={(el) => (itemRefs.current[index] = el)}
-          className={`flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-14 w-full max-w-[1200px] transition-all duration-700 ${visibleItems[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-            }`}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-14 w-full max-w-[1200px]"
         >
           {feature.imagePosition === "left" && (
             <div className="flex flex-col max-w-full lg:max-w-[540px] w-full lg:w-[540px] items-start relative group">
@@ -101,9 +69,9 @@ export const ComparisonFeaturesSection = (): JSX.Element => {
             </div>
           )}
 
-          <div className="flex flex-col w-full lg:w-[540px] items-start gap-3">
+          <div className="flex flex-col w-full lg:w-[540px] items-start gap-4">
             <div className="flex flex-col items-start w-full">
-              <span className="[font-family:'Roboto',Helvetica] font-bold text-[#9ea8fb] text-sm tracking-[1.00px] leading-[21px] whitespace-nowrap">
+              <span className="[font-family:'Roboto',Helvetica] font-bold text-[#9ea8fb] text-sm tracking-[1.50px] leading-[21px] whitespace-nowrap">
                 {feature.tag}
               </span>
             </div>
@@ -143,7 +111,7 @@ export const ComparisonFeaturesSection = (): JSX.Element => {
               />
             </div>
           )}
-        </div>
+        </motion.div>
       ))}
     </section>
   );

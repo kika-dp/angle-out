@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "../../../../components/ui/accordion";
+import { motion } from "framer-motion";
 
 const faqItems = [
   {
@@ -35,64 +35,51 @@ const faqItems = [
 ];
 
 export const ServicesOverviewSection = (): JSX.Element => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
   return (
-    <section ref={sectionRef} className="relative flex flex-col items-center justify-center gap-6 px-4 py-[60px] w-full overflow-hidden bg-[linear-gradient(0deg,rgba(15,24,41,1)_0%,rgba(15,24,41,1)_100%),linear-gradient(180deg,rgba(42,53,106,1)_0%,rgba(15,24,41,1)_100%)]">
-      <div className="absolute top-[-170px] right-[-180px] w-[758px] h-[758px] bg-[#7b94ff40] rounded-[379px] blur-[125px] pointer-events-none" />
+    <section className="relative flex flex-col items-center justify-center gap-10 px-4 py-[100px] w-full overflow-hidden bg-[#0f1829]">
+      <div className="absolute top-[-170px] right-[-180px] w-[758px] h-[758px] bg-[#7b94ff30] rounded-[379px] blur-[125px] pointer-events-none" />
+      <div className="absolute bottom-[-170px] left-[-180px] w-[758px] h-[758px] bg-[#7b94ff20] rounded-[379px] blur-[125px] pointer-events-none" />
 
-      <div className="absolute top-[683px] right-[1588px] w-[758px] h-[758px] bg-[#7b94ff40] rounded-[379px] blur-[125px] pointer-events-none" />
-
-      <div className={`flex items-center justify-center w-full max-w-[1440px] px-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-2xl md:text-3xl lg:text-[40px] tracking-[-1.5px] leading-tight lg:leading-[48px] text-center">
-          How we can help you
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className="flex items-center justify-center w-full max-w-[1440px] px-10 text-center z-10"
+      >
+        <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-3xl md:text-4xl lg:text-[40px] tracking-tight leading-tight mb-4">
+          How we can help you grow
         </h2>
-      </div>
+      </motion.div>
 
-      <div className={`w-full max-w-[1440px] transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        className="w-full max-w-[1000px] z-10"
+      >
         <Accordion type="single" collapsible className="w-full">
-          {faqItems.map((item, index) => (
+          {faqItems.map((item) => (
             <AccordionItem
               key={item.id}
               value={item.id}
-              className="border-t border-white transition-all hover:bg-white/5"
+              className="border-t border-white/10 transition-all hover:bg-white/[0.02]"
             >
-              <AccordionTrigger className="px-4 md:px-10 py-5 hover:no-underline [&[data-state=open]>svg]:rotate-45 transition-all">
-                <span className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-lg md:text-xl lg:text-[22px] leading-tight md:leading-8 text-left">
+              <AccordionTrigger className="px-4 md:px-8 py-6 hover:no-underline [&[data-state=open]>svg]:rotate-45 transition-all text-white">
+                <span className="[font-family:'Montserrat',Helvetica] font-semibold text-lg md:text-xl lg:text-[22px] leading-tight text-left">
                   {item.question}
                 </span>
               </AccordionTrigger>
-              <AccordionContent className="px-4 md:px-10 pb-5">
-                <div className="text-white/80 text-sm md:text-base leading-relaxed">
+              <AccordionContent className="px-4 md:px-8 pb-8">
+                <div className="text-white/70 text-base md:text-lg leading-relaxed [font-family:'Montserrat',Helvetica]">
                   {item.answer}
                 </div>
               </AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
-      </div>
+      </motion.div>
     </section>
   );
 };

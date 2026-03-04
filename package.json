@@ -9,18 +9,19 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.1",
+    "@radix-ui/react-avatar": "^1.1.1",
+    "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.0",
     "clsx": "2.1.1",
+    "embla-carousel-react": "^8.3.0",
+    "framer-motion": "^12.34.3",
     "lucide-react": "^0.453.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1",
     "tailwind-merge": "2.5.4",
-    "tailwindcss-animate": "1.0.7",
-    "embla-carousel-react": "^8.3.0",
-    "@radix-ui/react-slot": "^1.1.0",
-    "class-variance-authority": "^0.7.0",
-    "@radix-ui/react-avatar": "^1.1.1",
-    "@radix-ui/react-accordion": "^1.2.1"
+    "tailwindcss-animate": "1.0.7"
   },
   "devDependencies": {
     "@animaapp/vite-plugin-screen-graph": "^0.1.5",

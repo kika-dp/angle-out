@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   ArrowRightIcon,
   ChevronLeftIcon,
@@ -7,6 +7,23 @@ import {
 import { Avatar, AvatarImage } from "../../../../components/ui/avatar";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
+import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
+
+const Counter = ({ value, duration = 2 }: { value: number; duration?: number }) => {
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest) + "%");
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (isInView) {
+      const animation = animate(count, value, { duration: duration, ease: "easeOut" });
+      return animation.stop;
+    }
+  }, [isInView, value, count, duration]);
+
+  return <motion.span ref={ref}>{rounded}</motion.span>;
+};
 
 const testimonials = [
   {
@@ -22,7 +39,7 @@ const testimonials = [
     chart:
       "https://c.animaapp.com/mlna8z4qvTbWDz/img/67ffb9fb6e19d3de9ace40ff-customer-20testimonial-20--20styled-20-.png",
     chartHeight: "h-[373px]",
-    percentage: "330%",
+    percentage: 330,
     metric: "Organic SEO Traffic",
   },
   {
@@ -38,7 +55,7 @@ const testimonials = [
     chart:
       "https://c.animaapp.com/mlna8z4qvTbWDz/img/67e5b8bd0f58677f37ccd435-graph-png.png",
     chartHeight: "h-[372px]",
-    percentage: "330%",
+    percentage: 330,
     metric: "Organic SEO Traffic",
   },
   {
@@ -54,36 +71,14 @@ const testimonials = [
     chart:
       "https://c.animaapp.com/mlna8z4qvTbWDz/img/67ffbaa58f9d375a517feb4a-customer-20testimonial-20--20styled-20-.png",
     chartHeight: "h-[373.75px]",
-    percentage: "330%",
+    percentage: 330,
     metric: "Organic SEO Traffic",
   },
 ];
 
 export const ResultsShowcaseSection = (): JSX.Element => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
 
   const handlePrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
@@ -94,9 +89,15 @@ export const ResultsShowcaseSection = (): JSX.Element => {
   };
 
   return (
-    <section ref={sectionRef} className="w-full bg-white py-[60px] px-4 md:px-16 lg:px-20">
+    <section ref={sectionRef} className="w-full bg-white py-[60px] px-4 md:px-16 lg:px-20 overflow-hidden">
       <div className="w-full max-w-[1600px] mx-auto">
-        <header className={`flex flex-col md:flex-row items-start md:items-center justify-between mb-12 gap-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <motion.header
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 gap-6"
+        >
           <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-2xl md:text-3xl lg:text-[40px] tracking-[-1.5px] leading-tight lg:leading-[48px]">
             Some recent client results
           </h2>
@@ -125,9 +126,15 @@ export const ResultsShowcaseSection = (): JSX.Element => {
               <ChevronRightIcon className="w-6 h-6 text-[#031226]" />
             </Button>
           </nav>
-        </header>
+        </motion.header>
 
-        <div className={`overflow-hidden transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="overflow-hidden"
+        >
           <div
             className="flex transition-transform duration-500 ease-out gap-6"
             style={{ transform: `translateX(-${currentIndex * 504}px)` }}
@@ -180,7 +187,7 @@ export const ResultsShowcaseSection = (): JSX.Element => {
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <div className="flex items-center gap-1.5">
                         <span className="[font-family:'Montserrat',Helvetica] font-medium text-[#12131c] text-[14px] leading-[18px]">
-                          {testimonial.percentage}
+                          <Counter value={testimonial.percentage} />
                         </span>
                         <p className="[font-family:'Montserrat',Helvetica] font-normal text-[12px] leading-[16px]">
                           <span className="font-medium text-[#12131c]">
@@ -202,7 +209,7 @@ export const ResultsShowcaseSection = (): JSX.Element => {
               </Card>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Pagination Dots */}
         <div className="flex justify-center gap-2 mt-8">

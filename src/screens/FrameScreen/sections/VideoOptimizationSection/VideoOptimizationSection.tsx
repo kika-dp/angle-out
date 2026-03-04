@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "../../../../components/ui/accordion";
+import { motion } from "framer-motion";
 
 const faqData = [
   {
@@ -36,50 +36,38 @@ const faqData = [
 ];
 
 export const VideoOptimizationSection = (): JSX.Element => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
   return (
-    <section ref={sectionRef} className="flex flex-col w-full items-center justify-center gap-6 px-4 md:px-16 lg:px-20 py-[60px] bg-white">
-      <div className={`flex items-center justify-center w-full max-w-[1440px] transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-2xl md:text-3xl lg:text-[40px] tracking-[-1.5px] leading-tight lg:leading-[48px]">
-          FAQs
+    <section className="flex flex-col w-full items-center justify-center gap-6 px-4 md:px-16 lg:px-20 py-[100px] bg-white overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className="flex items-center justify-center w-full max-w-[1440px]"
+      >
+        <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-2xl md:text-3xl lg:text-[40px] tracking-[-1.5px] leading-tight lg:leading-[48px] mb-8">
+          Frequently Asked Questions
         </h2>
-      </div>
+      </motion.div>
 
-      <div className={`flex flex-col w-full max-w-[1440px] items-start transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        className="flex flex-col w-full max-w-[1440px] items-start"
+      >
         <Accordion
           type="single"
           collapsible
           defaultValue="item-1"
           className="w-full"
         >
-          {faqData.map((faq, index) => (
+          {faqData.map((faq) => (
             <AccordionItem
               key={faq.id}
               value={faq.id}
-              className="border-t border-[#c2c2c2] data-[state=open]:backdrop-blur-[2.0px] data-[state=open]:backdrop-brightness-[110%] data-[state=open]:[-webkit-backdrop-filter:blur(2.0px)_brightness(110%)] data-[state=open]:shadow-[inset_0_1px_0_rgba(255,255,255,0.40),inset_1px_0_0_rgba(255,255,255,0.32),inset_0_-1px_1px_rgba(0,0,0,0.13),inset_-1px_0_1px_rgba(0,0,0,0.11)] data-[state=open]:bg-[linear-gradient(0deg,rgba(210,233,255,1)_0%,rgba(245,245,249,1)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)] transition-all"
+              className="border-t border-[#c2c2c2] data-[state=open]:backdrop-blur-[2.0px] data-[state=open]:backdrop-brightness-[110%] data-[state=open]:shadow-[inset_0_1px_0_rgba(255,255,255,0.40),inset_1px_0_0_rgba(255,255,255,0.32),inset_0_-1px_1px_rgba(0,0,0,0.13),inset_-1px_0_1px_rgba(0,0,0,0.11)] data-[state=open]:bg-[linear-gradient(0deg,rgba(210,233,255,1)_0%,rgba(245,245,249,1)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)] transition-all"
             >
               <AccordionTrigger className="px-4 md:px-10 py-5 hover:no-underline [&[data-state=open]>svg]:hidden">
                 <span className="[font-family:'Montserrat',Helvetica] font-semibold text-[#1e1e1e] text-lg md:text-xl lg:text-[22px] leading-tight md:leading-8 text-left">
@@ -96,7 +84,7 @@ export const VideoOptimizationSection = (): JSX.Element => {
             </AccordionItem>
           ))}
         </Accordion>
-      </div>
+      </motion.div>
     </section>
   );
 };

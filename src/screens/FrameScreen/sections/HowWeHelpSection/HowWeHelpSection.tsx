@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Card, CardContent } from "../../../../components/ui/card";
 import {
   Carousel,
@@ -7,6 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../../../../components/ui/carousel";
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -60,40 +61,29 @@ const testimonials = [
 ];
 
 export const HowWeHelpSection = (): JSX.Element => {
-  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
   return (
-    <section ref={sectionRef} className="flex flex-col items-center gap-6 px-4 md:px-16 lg:px-20 py-[60px] w-full bg-[linear-gradient(0deg,rgba(210,233,255,1)_0%,rgba(245,245,249,1)_100%),linear-gradient(0deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_100%)]">
+    <section ref={sectionRef} className="flex flex-col items-center gap-6 px-4 md:px-16 lg:px-20 py-[100px] w-full bg-[linear-gradient(180deg,rgba(245,245,249,1)_0%,rgba(210,233,255,1)_100%)] overflow-hidden">
       <div className="w-full max-w-[1600px]">
-        <header className={`flex items-center justify-between mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <motion.header
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="flex items-center justify-between mb-20"
+        >
           <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-2xl md:text-3xl lg:text-[40px] tracking-[-1.5px] leading-tight lg:leading-[48px]">
             What our clients are saying
           </h2>
-        </header>
+        </motion.header>
 
-        <div className={`transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        >
           <Carousel
             opts={{
               align: "start",
@@ -108,31 +98,31 @@ export const HowWeHelpSection = (): JSX.Element => {
                   className="pl-4 md:basis-[85%] lg:basis-[85%]"
                 >
                   <Card
-                    className={`border-[5px] ${testimonial.borderColor} rounded-3xl overflow-hidden bg-white hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]`}
+                    className={`border-[5px] ${testimonial.borderColor} rounded-[32px] overflow-hidden bg-white shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.01]`}
                   >
                     <CardContent className="p-0">
                       <div className="flex flex-col md:flex-row items-stretch">
                         <img
-                          className="w-full md:w-[360px] h-[300px] md:h-[420px] object-cover"
+                          className="w-full md:w-[360px] h-[300px] md:h-[450px] object-cover"
                           alt={testimonial.name}
                           src={testimonial.image}
                         />
-                        <div className="flex flex-col gap-3 p-5 md:p-8 flex-1">
-                          <div className="flex flex-col gap-6">
-                            <blockquote className="[font-family:'Montserrat',Helvetica] font-normal text-[#12131c] text-base md:text-lg leading-relaxed">
+                        <div className="flex flex-col gap-3 p-6 md:p-10 flex-1 justify-center">
+                          <div className="flex flex-col gap-8">
+                            <blockquote className="[font-family:'Montserrat',Helvetica] font-normal text-[#12131c] text-base md:text-xl leading-relaxed italic opacity-90">
                               &quot;{testimonial.quote}&quot;
                             </blockquote>
-                            <div className="h-px bg-[#12131c]" />
+                            <div className="h-px bg-black/5" />
                             <div className="flex flex-col gap-1">
-                              <cite className="not-italic [font-family:'Roboto',Helvetica] font-normal text-[#12131c] text-xl md:text-[24px] leading-[30px]">
+                              <cite className="not-italic [font-family:'Montserrat',Helvetica] font-bold text-[#031226] text-xl md:text-2xl leading-[30px]">
                                 {testimonial.name}
                               </cite>
-                              <p className="[font-family:'Roboto',Helvetica] font-normal text-[#4f515e] text-base md:text-[18.5px] leading-[27.8px]">
+                              <p className="[font-family:'Montserrat',Helvetica] font-medium text-[#4f515e] text-base md:text-lg leading-[27.8px]">
                                 {testimonial.title}
                               </p>
                             </div>
                             <div
-                              className={`${testimonial.logoWidth} ${testimonial.logoHeight} bg-cover bg-center bg-no-repeat`}
+                              className={`${testimonial.logoWidth} ${testimonial.logoHeight} bg-contain bg-center bg-no-repeat opacity-80`}
                               style={{
                                 backgroundImage: `url(${testimonial.logo})`,
                               }}
@@ -147,12 +137,12 @@ export const HowWeHelpSection = (): JSX.Element => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-end gap-4 mt-8">
-              <CarouselPrevious className="static translate-y-0 hover:scale-110 transition-transform" />
-              <CarouselNext className="static translate-y-0 hover:scale-110 transition-transform" />
+            <div className="flex justify-end gap-6 mt-12">
+              <CarouselPrevious className="static translate-y-0 h-12 w-12 border-2 border-[#031226]/10 hover:bg-[#031226] hover:text-white transition-all duration-300" />
+              <CarouselNext className="static translate-y-0 h-12 w-12 border-2 border-[#031226]/10 hover:bg-[#031226] hover:text-white transition-all duration-300" />
             </div>
           </Carousel>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
