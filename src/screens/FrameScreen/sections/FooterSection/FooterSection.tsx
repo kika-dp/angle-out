@@ -1,6 +1,8 @@
 import { ArrowRightIcon, LinkedinIcon, YoutubeIcon } from "lucide-react";
 import { Button } from "../../../../components/ui/button";
 
+import Logo from "../../../../assets/angleout-logo-transparent-23.png";
+
 const socialLinks = [
   {
     icon: YoutubeIcon,
@@ -54,9 +56,11 @@ export const FooterSection = (): JSX.Element => {
         <div className="flex flex-col lg:flex-row w-full items-start justify-between gap-16 lg:gap-24 mb-16">
           {/* Brand Column */}
           <div className="flex flex-col items-start gap-8 max-w-sm">
-            <h2 className={`[font-family:'Baloo_Bhaina-Regular',Helvetica] font-normal text-3xl text-white leading-none tracking-tight`}>
-              AngleOut.io
-            </h2>
+            <img
+              src={Logo}
+              alt="AngleOut Logo"
+              className="h-40 md:h-56 w-auto object-contain"
+            />
             <p className="[font-family:'Montserrat',Helvetica] font-medium text-white/50 text-base leading-relaxed">
               Accelerating B2B SaaS growth through data-driven content strategies and premium SEO execution.
             </p>

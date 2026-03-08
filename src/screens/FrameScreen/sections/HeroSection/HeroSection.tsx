@@ -4,6 +4,10 @@ import { Badge } from "../../../../components/ui/badge";
 import { Button } from "../../../../components/ui/button";
 import { motion } from "framer-motion";
 
+import Logo from "../../../../assets/angleout-logo-transparent-23.png";
+
+import FrameBg from "../../../../assets/Frame-bg.svg";
+
 const navItems = [
   { label: "Home", href: "#" },
   { label: "Services", href: "#services" },
@@ -87,9 +91,9 @@ export const HeroSection = (): JSX.Element => {
       />
 
       <img
-        className="absolute top-0 left-0 w-full h-[1046px] object-cover opacity-60"
-        alt="Background gradient"
-        src="https://c.animaapp.com/mlna8z4qvTbWDz/img/group-1000003957.png"
+        src={FrameBg}
+        alt="Background"
+        className="absolute top-0 left-0 w-full h-[1046px] object-cover pointer-events-none"
       />
 
       {/* Sticky Header */}
@@ -97,15 +101,22 @@ export const HeroSection = (): JSX.Element => {
         ? "bg-white/80 backdrop-blur-xl border-b border-black/[0.05] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)]"
         : "bg-transparent border-b border-transparent"
         }`}>
-        <nav className="flex min-h-[80px] items-center justify-center px-4 md:px-10 py-0 relative w-full transition-all duration-500">
+        <nav className={`flex items-center justify-center px-4 md:px-10 py-0 relative w-full transition-all duration-500 ${scrolled ? "min-h-[70px] md:min-h-[80px]" : "min-h-[100px] md:min-h-[120px]"
+          }`}>
           <div className="flex max-w-[1440px] w-full items-center justify-between">
             <a
               href="#"
               onClick={(e) => handleNavClick(e, "#", "Home")}
-              className={`[font-family:'Baloo_Bhaina-Regular',Helvetica] font-normal text-2xl md:text-3xl leading-10 tracking-tight whitespace-nowrap hover:opacity-80 transition-all duration-300 ${scrolled ? "text-black" : "text-white"
-                }`}
+              className="hover:opacity-80 transition-all duration-300"
             >
-              AngleOut.io
+              <img
+                src={Logo}
+                alt="AngleOut Logo"
+                className={`object-contain transition-all duration-300 ${scrolled
+                  ? "h-16 md:h-20 brightness-0"
+                  : "h-28 md:h-36"
+                  }`}
+              />
             </a>
 
             {/* Desktop Navigation */}
