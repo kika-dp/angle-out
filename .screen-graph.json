@@ -1,4 +1,21 @@
 {
-  "nodes": [],
+  "nodes": [
+    {
+      "id": "src/screens/FrameScreen/FrameScreen.tsx",
+      "label": "FrameScreen",
+      "routes": [
+        "/"
+      ],
+      "dataModelId": "18:11487",
+      "isRoot": true
+    },
+    {
+      "id": "src/screens/AngeloutLandingScreen/AngeloutLandingScreen.tsx",
+      "label": "AngeloutLandingScreen",
+      "routes": [
+        "/angelout"
+      ]
+    }
+  ],
   "edges": []
 }

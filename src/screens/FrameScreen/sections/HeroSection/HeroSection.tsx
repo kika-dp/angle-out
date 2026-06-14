@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { MenuIcon, XIcon } from "lucide-react";
 import { Badge } from "../../../../components/ui/badge";
 import { Button } from "../../../../components/ui/button";
@@ -10,15 +11,29 @@ import FrameBg from "../../../../assets/Frame-bg.svg";
 
 const navItems = [
   { label: "Home", href: "#" },
-  { label: "Services", href: "#services" },
+  { label: "Services", href: "/services" },
   { label: "Blog", href: "#blog" },
   { label: "Testimonials", href: "#testimonials" },
 ];
 
 export const HeroSection = (): JSX.Element => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("Home");
   const [scrolled, setScrolled] = useState(false);
+
+  // Scroll to a section when arriving with a hash (e.g. from the Services page)
+  useEffect(() => {
+    if (!location.hash) return;
+    const element = document.querySelector(location.hash);
+    if (element) {
+      const offset = 80;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({ top: elementPosition - offset, behavior: "smooth" });
+    }
+  }, [location]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,7 +63,9 @@ export const HeroSection = (): JSX.Element => {
     setMobileMenuOpen(false);
     setActiveSection(label);
 
-    if (href === "#") {
+    if (!href.startsWith("#")) {
+      navigate(href);
+    } else if (href === "#") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       const element = document.querySelector(href);
