@@ -90,7 +90,7 @@ export const ResultsShowcaseSection = (): JSX.Element => {
 
   return (
     <section ref={sectionRef} className="w-full bg-white py-[60px] px-4 md:px-16 lg:px-20 overflow-hidden">
-      <div className="w-full max-w-[1600px] mx-auto">
+      <div className="w-full max-w-[1280px] 3xl:max-w-[1600px] mx-auto">
         <motion.header
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

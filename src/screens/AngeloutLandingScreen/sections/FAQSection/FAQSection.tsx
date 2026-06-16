@@ -42,7 +42,7 @@ const faqItems = [
 export const FAQSection = (): JSX.Element => {
   return (
     <section
-      className="flex flex-col w-full items-center justify-center gap-6 px-4 md:px-16 lg:px-20 py-[100px] bg-white overflow-hidden"
+      className="flex flex-col w-full items-center justify-center gap-6 px-4 md:px-16 lg:px-20 py-[64px] 3xl:py-[100px] bg-white overflow-hidden"
       data-node-id="393:9805"
     >
       <motion.div
@@ -50,7 +50,7 @@ export const FAQSection = (): JSX.Element => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="flex items-center justify-center w-full max-w-[1440px]"
+        className="flex items-center justify-center w-full max-w-[1200px] 3xl:max-w-[1440px]"
       >
         <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-2xl md:text-3xl lg:text-[40px] tracking-[-1.5px] leading-tight lg:leading-[48px] mb-8">
           Frequently Asked Questions
@@ -62,7 +62,7 @@ export const FAQSection = (): JSX.Element => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-        className="flex flex-col w-full max-w-[1440px] items-start"
+        className="flex flex-col w-full max-w-[1200px] 3xl:max-w-[1440px] items-start"
       >
         <Accordion
           type="single"

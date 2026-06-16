@@ -73,7 +73,7 @@ export const HeroSection = (): JSX.Element => {
 
   return (
     <section
-      className="relative flex flex-col items-center gap-[100px] pb-[100px] w-full overflow-hidden bg-[#0f1829]"
+      className="relative flex flex-col items-center gap-[64px] pb-[64px] 3xl:gap-[100px] 3xl:pb-[100px] w-full overflow-hidden bg-[#0f1829]"
       data-node-id="393:9548"
     >
       {/* Background grid */}
@@ -94,7 +94,7 @@ export const HeroSection = (): JSX.Element => {
         }`}>
         <nav className={`flex items-center justify-center px-4 md:px-10 py-0 relative w-full transition-all duration-500 ${scrolled ? "min-h-[70px] md:min-h-[80px]" : "min-h-[100px] md:min-h-[120px]"
           }`}>
-          <div className="flex max-w-[1440px] w-full items-center justify-between">
+          <div className="flex max-w-[1200px] 3xl:max-w-[1440px] w-full items-center justify-between">
             <a
               href="/"
               onClick={(e) => handleNavClick(e, "/", "Home")}
@@ -197,7 +197,7 @@ export const HeroSection = (): JSX.Element => {
       <div className="w-full h-[72px]" />
 
       {/* Hero content */}
-      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16 w-full max-w-[1440px] px-4 md:px-10">
+      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16 w-full max-w-[1200px] 3xl:max-w-[1440px] px-4 md:px-10">
         <div className="flex flex-col gap-10 items-start w-full lg:max-w-[623px] shrink-0">
           <h1 className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-[clamp(3rem,6vw,100px)] leading-[1.08] tracking-[-3.1486px] max-w-[623px]">
             B2B SaaS<br />SEO Agency
@@ -222,8 +222,8 @@ export const HeroSection = (): JSX.Element => {
       </div>
 
       {/* Logo strip */}
-      <div className="relative z-10 flex flex-col gap-4 items-center w-full max-w-[1440px] px-4">
-        <p className="[font-family:'Montserrat',Helvetica] font-medium text-[24px] leading-[34px] text-[rgba(194,194,194,0.7)] text-center">
+      <div className="relative z-10 flex flex-col gap-4 items-center w-full max-w-[1200px] 3xl:max-w-[1440px] px-4">
+        <p className="[font-family:'Montserrat',Helvetica] font-medium text-[20px] leading-[30px] 3xl:text-[24px] 3xl:leading-[34px] text-[rgba(194,194,194,0.7)] text-center">
           Trusted by growing B2B SaaS companies
         </p>
         <div className="w-full h-[42px] overflow-hidden">

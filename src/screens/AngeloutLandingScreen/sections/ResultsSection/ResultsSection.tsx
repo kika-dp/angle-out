@@ -71,12 +71,12 @@ export const ResultsSection = (): JSX.Element => {
 
   return (
     <section
-      className="flex flex-col items-center px-4 md:px-10 py-[100px] w-full bg-white"
+      className="flex flex-col items-center px-4 md:px-10 py-[64px] 3xl:py-[100px] w-full bg-white"
       data-node-id="393:9722"
       id="results"
     >
-      <div className="flex flex-col gap-8 items-center w-full max-w-[1440px]">
-        <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-[54px] leading-[64px] tracking-[-2px] text-center">
+      <div className="flex flex-col gap-8 items-center w-full max-w-[1200px] 3xl:max-w-[1440px]">
+        <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-[40px] leading-[48px] 3xl:text-[54px] 3xl:leading-[64px] tracking-[-2px] text-center">
           Some recent client results
         </h2>
 
@@ -84,27 +84,27 @@ export const ResultsSection = (): JSX.Element => {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-10 w-full">
             <div className="flex flex-col gap-8 items-start w-full lg:max-w-[657px]">
               <div className="flex flex-col gap-3 items-start">
-                <p className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-[48px] leading-[56px] tracking-[-2px]">
+                <p className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-[38px] leading-[46px] 3xl:text-[48px] 3xl:leading-[56px] tracking-[-2px]">
                   {active.name}
                 </p>
                 <div className="flex flex-col gap-1">
-                  <p className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-[24px] leading-[32px]">
+                  <p className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-[20px] leading-[28px] 3xl:text-[24px] 3xl:leading-[32px]">
                     {active.role}
                   </p>
                   {active.stage && (
-                    <p className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-[24px] leading-[32px]">
+                    <p className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-[20px] leading-[28px] 3xl:text-[24px] 3xl:leading-[32px]">
                       {active.stage}
                     </p>
                   )}
                 </div>
                 {active.tagline && (
-                  <p className="[font-family:'Montserrat',Helvetica] font-semibold italic text-[#666] text-[20px] leading-[28px]">
+                  <p className="[font-family:'Montserrat',Helvetica] font-semibold italic text-[#666] text-[17px] leading-[26px] 3xl:text-[20px] 3xl:leading-[28px]">
                     {active.tagline}
                   </p>
                 )}
               </div>
               {active.quote && (
-                <p className="[font-family:'Montserrat',Helvetica] font-normal text-[#666] text-[24px] leading-[34px] max-w-[637px]">
+                <p className="[font-family:'Montserrat',Helvetica] font-normal text-[#666] text-[20px] leading-[30px] 3xl:text-[24px] 3xl:leading-[34px] max-w-[637px]">
                   {active.quote}
                 </p>
               )}
@@ -114,7 +114,7 @@ export const ResultsSection = (): JSX.Element => {
               <img
                 src={active.video}
                 alt={`${active.name} testimonial video thumbnail`}
-                className="w-full h-[371px] object-cover"
+                className="w-full h-[300px] 3xl:h-[371px] object-cover"
               />
             </div>
           </div>
@@ -136,18 +136,18 @@ export const ResultsSection = (): JSX.Element => {
                   <img
                     src={client.avatar}
                     alt={client.name}
-                    className="w-[66px] h-[66px] rounded-full object-cover shrink-0"
+                    className="w-[56px] h-[56px] 3xl:w-[66px] 3xl:h-[66px] rounded-full object-cover shrink-0"
                   />
                   <div className="flex flex-col gap-0.5 min-w-0">
                     <span
-                      className={`[font-family:'Montserrat',Helvetica] font-semibold text-[24px] leading-[32px] truncate ${
+                      className={`[font-family:'Montserrat',Helvetica] font-semibold text-[20px] leading-[28px] 3xl:text-[24px] 3xl:leading-[32px] truncate ${
                         isActive ? "text-white" : "text-[#031226]"
                       }`}
                     >
                       {client.name}
                     </span>
                     <span
-                      className={`[font-family:'Montserrat',Helvetica] font-semibold text-[20px] leading-[32px] truncate ${
+                      className={`[font-family:'Montserrat',Helvetica] font-semibold text-[17px] leading-[28px] 3xl:text-[20px] 3xl:leading-[32px] truncate ${
                         isActive ? "text-white" : "text-[#031226]"
                       }`}
                     >

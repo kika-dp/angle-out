@@ -50,29 +50,29 @@ export const BookingSection = (): JSX.Element => {
       <div className="absolute right-[-180px] top-[-170px] w-[758px] h-[758px] bg-[#7b94ff30] rounded-full blur-[125px] pointer-events-none" />
 
       {/* Booking */}
-      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 w-full max-w-[1440px] px-4 md:px-10 pt-[100px] pb-[80px]">
+      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 w-full max-w-[1200px] 3xl:max-w-[1440px] px-4 md:px-10 pt-[64px] pb-[56px] 3xl:pt-[100px] 3xl:pb-[80px]">
         <div className="flex flex-col gap-8 max-w-[593px]">
-          <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-[54px] leading-[68px] tracking-[-2px]">
+          <h2 className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-[40px] leading-[50px] 3xl:text-[54px] 3xl:leading-[68px] tracking-[-2px]">
             Ready to take the B2B SaaS industry by AngleOut
           </h2>
-          <p className="[font-family:'Montserrat',Helvetica] font-normal text-[#c2c2c2] text-[24px] leading-[40px] max-w-[578px]">
+          <p className="[font-family:'Montserrat',Helvetica] font-normal text-[#c2c2c2] text-[18px] leading-[30px] 3xl:text-[24px] 3xl:leading-[40px] max-w-[578px]">
             Schedule a 1:1 strategic call with our co-founder to see if
             AngleOut is the right fit for your SaaS.
           </p>
 
           <div className="flex items-center gap-4">
-            <div className="w-[99px] h-[99px] rounded-full bg-[#2b61ee] shrink-0 overflow-hidden">
+            <div className="w-[80px] h-[80px] 3xl:w-[99px] 3xl:h-[99px] rounded-full bg-[#2b61ee] shrink-0 overflow-hidden">
               <div className="w-full h-full bg-gradient-to-br from-[#4d6bfe] to-[#9ea8fb] flex items-center justify-center text-white text-2xl font-semibold">
                 SS
               </div>
             </div>
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-3">
-                <span className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-[24px] leading-[30px]">
+                <span className="[font-family:'Montserrat',Helvetica] font-semibold text-white text-[20px] leading-[28px] 3xl:text-[24px] 3xl:leading-[30px]">
                   Sreeram Sharma
                 </span>
               </div>
-              <span className="[font-family:'Montserrat',Helvetica] font-normal text-[#c2c2c2] text-[20px] leading-[30px]">
+              <span className="[font-family:'Montserrat',Helvetica] font-normal text-[#c2c2c2] text-[17px] leading-[26px] 3xl:text-[20px] 3xl:leading-[30px]">
                 CEO &amp; Co-Founder at Angleout
               </span>
             </div>
@@ -80,8 +80,8 @@ export const BookingSection = (): JSX.Element => {
         </div>
 
         {/* Calendar */}
-        <div className="w-full max-w-[680px] bg-white rounded-[12px] shadow-[0px_4px_24px_rgba(0,0,0,0.15)] flex flex-col p-6 md:p-10 shrink-0">
-          <p className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-[24px] leading-[32px] text-center mb-6">
+        <div className="w-full max-w-[560px] 3xl:max-w-[680px] bg-white rounded-[12px] shadow-[0px_4px_24px_rgba(0,0,0,0.15)] flex flex-col p-6 md:p-8 3xl:p-10 shrink-0">
+          <p className="[font-family:'Montserrat',Helvetica] font-semibold text-[#031226] text-[20px] leading-[28px] 3xl:text-[24px] 3xl:leading-[32px] text-center mb-6">
             Select a Day
           </p>
 
@@ -149,7 +149,7 @@ export const BookingSection = (): JSX.Element => {
         className="relative z-10 w-full flex flex-col items-center px-4 md:px-10 pb-20"
         data-node-id="393:9816"
       >
-        <div className="flex flex-col lg:flex-row items-start justify-between gap-12 w-full max-w-[1440px]">
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-12 w-full max-w-[1200px] 3xl:max-w-[1440px]">
           <div className="flex flex-col gap-8">
             <ConsultationButton />
             <p className="[font-family:'Roboto',Helvetica] font-normal text-[#c2c2c2] text-[16px] leading-[24px]">

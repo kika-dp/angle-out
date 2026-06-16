@@ -34,35 +34,35 @@ const services = [
 export const ServicesSection = (): JSX.Element => {
   return (
     <section
-      className="flex flex-col items-center px-4 md:px-10 py-[100px] w-full bg-[linear-gradient(0deg,rgb(210,233,255)_0%,rgb(245,245,249)_100%)]"
+      className="flex flex-col items-center px-4 md:px-10 py-[64px] 3xl:py-[100px] w-full bg-[linear-gradient(0deg,rgb(210,233,255)_0%,rgb(245,245,249)_100%)]"
       data-node-id="393:9796"
     >
-      <div className="flex flex-col gap-20 w-full max-w-[1440px]">
+      <div className="flex flex-col gap-14 3xl:gap-20 w-full max-w-[1200px] 3xl:max-w-[1440px]">
         <SectionHeading>What we do</SectionHeading>
 
-        <div className="flex flex-col gap-[100px]">
+        <div className="flex flex-col gap-[64px] 3xl:gap-[100px]">
           {services.map((service) => (
             <div
               key={service.title.join(" ")}
               className={`flex flex-col ${
                 service.imagePosition === "left" ? "lg:flex-row" : "lg:flex-row-reverse"
-              } items-center gap-10 lg:gap-16 xl:gap-[100px] 2xl:gap-[165px] w-full`}
+              } items-center gap-10 lg:gap-14 xl:gap-16 3xl:gap-[165px] w-full`}
             >
               <div className="flex flex-col gap-[27px] items-start w-full lg:max-w-[664px]">
-                <h3 className="[font-family:'Sora',Helvetica] font-semibold text-[#132d39] text-[40.5px] leading-[56.7px]">
+                <h3 className="[font-family:'Sora',Helvetica] font-semibold text-[#132d39] text-[32px] leading-[44px] 3xl:text-[40.5px] 3xl:leading-[56.7px]">
                   {service.title.map((line) => (
                     <span key={line} className="block">
                       {line}
                     </span>
                   ))}
                 </h3>
-                <p className="[font-family:'Sora',Helvetica] font-normal text-[#132d39] text-[20.25px] leading-[30.375px]">
+                <p className="[font-family:'Sora',Helvetica] font-normal text-[#132d39] text-[17px] leading-[26px] 3xl:text-[20.25px] 3xl:leading-[30.375px]">
                   {service.description}
                 </p>
                 <ConsultationButton variant="dark" />
               </div>
 
-              <div className="relative w-full flex-1 min-h-[300px] lg:min-h-[438px] rounded-[36px] overflow-hidden">
+              <div className="relative w-full flex-1 min-h-[300px] lg:min-h-[360px] 3xl:min-h-[438px] rounded-[36px] overflow-hidden">
                 <img
                   src={service.image}
                   alt={service.title.join(" ")}

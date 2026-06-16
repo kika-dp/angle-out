@@ -24,11 +24,11 @@ const inHouseItems = [
 export const GoodFitSection = (): JSX.Element => {
   return (
     <section
-      className="flex flex-col items-center px-4 md:px-10 py-[100px] w-full bg-[linear-gradient(0deg,rgb(210,233,255)_0%,rgb(245,245,249)_100%)]"
+      className="flex flex-col items-center px-4 md:px-10 py-[64px] 3xl:py-[100px] w-full bg-[linear-gradient(0deg,rgb(210,233,255)_0%,rgb(245,245,249)_100%)]"
       data-node-id="398:8008"
       id="testimonials"
     >
-      <div className="flex flex-col gap-[100px] items-center w-full max-w-[1440px]">
+      <div className="flex flex-col gap-[64px] 3xl:gap-[100px] items-center w-full max-w-[1200px] 3xl:max-w-[1440px]">
         <SectionHeading>Are we a good fit for your SaaS?</SectionHeading>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
@@ -50,7 +50,7 @@ export const GoodFitSection = (): JSX.Element => {
               {angleOutItems.map((item) => (
                 <li key={item} className="flex gap-4 items-center">
                   <img src={arrowUpGreen} alt="" className="w-5 h-5 shrink-0" />
-                  <span className="[font-family:'Poppins',Helvetica] text-white text-[18px] leading-[30.6px]">
+                  <span className="[font-family:'Poppins',Helvetica] text-white text-[16px] leading-[27px] 3xl:text-[18px] 3xl:leading-[30.6px]">
                     {item}
                   </span>
                 </li>
@@ -63,7 +63,7 @@ export const GoodFitSection = (): JSX.Element => {
                 type="button"
                 className="inline-flex items-center gap-2.5 px-7 py-4 text-white hover:opacity-80 transition-opacity"
               >
-                <span className="[font-family:'Montserrat',Helvetica] font-semibold text-[20px] leading-[27.956px]">
+                <span className="[font-family:'Montserrat',Helvetica] font-semibold text-base leading-[24px] 3xl:text-[20px] 3xl:leading-[27.956px]">
                   Read Success Stories
                 </span>
                 <img src={arrowLight} alt="" className="w-[23.297px] h-[23.297px]" />
@@ -72,14 +72,14 @@ export const GoodFitSection = (): JSX.Element => {
           </div>
 
           <div className="bg-white border border-[#c8cfda] rounded-[8px] px-[33px] py-[41px]">
-            <h4 className="[font-family:'Poppins',Helvetica] font-semibold text-[#212529] text-[28px] leading-[39.2px] mb-5">
+            <h4 className="[font-family:'Poppins',Helvetica] font-semibold text-[#212529] text-[24px] leading-[34px] 3xl:text-[28px] 3xl:leading-[39.2px] mb-5">
               With In-House Marketer
             </h4>
             <ul className="flex flex-col gap-[19.2px]">
               {inHouseItems.map((item) => (
                 <li key={item} className="flex gap-4 items-center">
                   <img src={arrowDownGrey} alt="" className="w-5 h-5 shrink-0" />
-                  <span className="[font-family:'Poppins',Helvetica] text-[#212529] text-[18px] leading-[30.6px]">
+                  <span className="[font-family:'Poppins',Helvetica] text-[#212529] text-[16px] leading-[27px] 3xl:text-[18px] 3xl:leading-[30.6px]">
                     {item}
                   </span>
                 </li>

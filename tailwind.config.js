@@ -6,6 +6,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // Custom breakpoint marking the boundary above which the design renders at
+      // its original "large monitor" scale. Everything below 1800px (MacBook Air/Pro,
+      // standard Windows laptops, smaller desktops) gets the scaled-down "laptop" tier,
+      // while 3xl+ (large external monitors and ultra-wide displays) keeps the
+      // pixel-for-pixel original layout.
+      screens: {
+        "3xl": "1800px",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

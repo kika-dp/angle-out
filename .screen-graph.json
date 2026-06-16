@@ -13,9 +13,26 @@
       "id": "src/screens/AngeloutLandingScreen/AngeloutLandingScreen.tsx",
       "label": "AngeloutLandingScreen",
       "routes": [
-        "/angelout"
+        "/services"
       ]
     }
   ],
-  "edges": []
+  "edges": [
+    {
+      "id": "src/screens/AngeloutLandingScreen/sections/HeroSection/HeroSection.tsx:98:12-to-src/screens/FrameScreen/FrameScreen.tsx",
+      "source": "src/screens/AngeloutLandingScreen/AngeloutLandingScreen.tsx",
+      "target": "src/screens/FrameScreen/FrameScreen.tsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "<a\n              href=\"/\"\n              onClick={(e) => handleNavClick(e, \"/\", \"Home\")}\n              className=\"hover:opacity-80 transition-all duration-300\"\n            >\n              <img\n                src={Logo}\n                alt=\"AngleOut Logo\"\n                className={`object-contain transition-all duration-300 ${scrolled\n                  ? \"h-16 md:h-20 brightness-0\"\n                  : \"h-28 md:h-36\"\n                  }`}\n              />\n            </a>",
+          "line": 98,
+          "endLine": 111,
+          "column": 12,
+          "endColumn": 16,
+          "sourceFile": "src/screens/AngeloutLandingScreen/sections/HeroSection/HeroSection.tsx"
+        }
+      }
+    }
+  ]
 }

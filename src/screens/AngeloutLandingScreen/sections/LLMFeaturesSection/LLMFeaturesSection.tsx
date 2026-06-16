@@ -33,15 +33,15 @@ const FeatureList = ({ items }: { items: string[] }) => (
 );
 
 const FeatureImage = ({ src, alt }: { src: string; alt: string }) => (
-  <div className="w-full max-w-[600px] rounded-[15px] shadow-[1px_0px_7px_0px_#808080] overflow-hidden shrink-0">
-    <img src={src} alt={alt} className="w-full h-[300px] object-cover object-top" />
+  <div className="w-full max-w-[500px] 3xl:max-w-[600px] rounded-[15px] shadow-[1px_0px_7px_0px_#808080] overflow-hidden shrink-0">
+    <img src={src} alt={alt} className="w-full h-[260px] 3xl:h-[300px] object-cover object-top" />
   </div>
 );
 
 export const LLMFeaturesSection = (): JSX.Element => {
   return (
     <section
-      className="flex flex-col gap-20 items-center px-4 md:px-10 py-[100px] w-full bg-white"
+      className="flex flex-col gap-14 3xl:gap-20 items-center px-4 md:px-10 py-[64px] 3xl:py-[100px] w-full bg-white"
       data-node-id="398:7199"
     >
       <div className="max-w-[624px] text-center">
@@ -51,10 +51,10 @@ export const LLMFeaturesSection = (): JSX.Element => {
         </SectionHeading>
       </div>
 
-      <div className="flex flex-col gap-[100px] w-full max-w-[1440px]">
+      <div className="flex flex-col gap-[64px] 3xl:gap-[100px] w-full max-w-[1200px] 3xl:max-w-[1440px]">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10 w-full">
           <div className="flex flex-col gap-5 max-w-[616px]">
-            <h3 className="[font-family:'Poppins',Helvetica] font-bold text-[#06101e] text-[32px] leading-[38.4px]">
+            <h3 className="[font-family:'Poppins',Helvetica] font-bold text-[#06101e] text-[26px] leading-[32px] 3xl:text-[32px] 3xl:leading-[38.4px]">
               Create Content Optimized
               <br />
               for AI Search (&amp; SEO!)
@@ -75,7 +75,7 @@ export const LLMFeaturesSection = (): JSX.Element => {
 
         <div className="flex flex-col lg:flex-row-reverse items-center justify-between gap-10 w-full">
           <div className="flex flex-col gap-5 max-w-[744px]">
-            <h3 className="[font-family:'Poppins',Helvetica] font-bold text-[#06101e] text-[32px] leading-[38.4px]">
+            <h3 className="[font-family:'Poppins',Helvetica] font-bold text-[#06101e] text-[26px] leading-[32px] 3xl:text-[32px] 3xl:leading-[38.4px]">
               Publish &amp; Get Referenced
               <br />
               Across the Web
@@ -95,7 +95,7 @@ export const LLMFeaturesSection = (): JSX.Element => {
 
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10 w-full">
           <div className="flex flex-col gap-5 max-w-[616px]">
-            <h3 className="[font-family:'Poppins',Helvetica] font-bold text-[#06101e] text-[32px] leading-[38.4px]">
+            <h3 className="[font-family:'Poppins',Helvetica] font-bold text-[#06101e] text-[26px] leading-[32px] 3xl:text-[32px] 3xl:leading-[38.4px]">
               Create Content Optimized
               <br />
               for AI Search (&amp; SEO!)
